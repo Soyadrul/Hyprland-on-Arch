@@ -1,0 +1,44 @@
+* {
+    border-radius: 25px;
+}
+
+window {
+    font-size: 20px;
+    font-family: "Roboto Mono";
+    background-color: rgba(50, 50, 50, 0.9);
+    color: white;
+    border: 2px solid white;
+}
+
+#scroll {
+    margin-bottom: 20px;
+    margin-right: 2px;
+}
+
+#entry {
+    margin-left: 2px;
+    padding: 0.25em;
+}
+
+#entry:selected {
+    background-color: #bbccdd;
+    #background: linear-gradient(90deg, #bbffdd, #dd77ff);
+}
+
+#text:selected {
+    color: #333333;
+}
+
+#input {
+    background-color: rgba(50, 50, 50, 0.5);
+    color: white;
+    padding: 0.25em;
+    border: 2px solid white;
+    #border-bottom-left-radius: 0px;
+    #border-bottom-right-radius: 0px;
+}
+
+#img {
+    margin-left:0.5em;
+    margin-right:0.25em;
+}

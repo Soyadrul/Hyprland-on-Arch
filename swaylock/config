@@ -1,0 +1,18 @@
+## CHECK WALLPAPER LOCATION ##
+
+ignore-empty-password
+font=RobotoMono
+font-size=33
+
+# Indicator
+indicator-idle-visible
+indicator-radius=100 #50
+indicator-thickness=10
+
+# Clock
+clock
+datestr=%a, %d/%m/%Y
+
+# Wallpaper
+image=$HOME/.config/wallpapers/PillarsOfCreation.jpg
+#effect-blur=5x20 (too long to process the blurriness)
