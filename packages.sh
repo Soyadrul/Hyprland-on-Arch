@@ -52,7 +52,7 @@ paru -S swaylock-effects
 sudo pacman -S waybar
 
 # Logout menu
-sudo pacman -S wlogout
+paru -S wlogout
 
 # App launcher
 sudo pacman -S wofi
