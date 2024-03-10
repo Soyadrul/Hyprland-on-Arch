@@ -42,6 +42,7 @@ ln -s "${Current_location}"/wallpapers/* "${target_folder}"
 
 # .bashrc
 target_folder="$HOME/"
+rm $HOME/.bashrc
 ln -s "${Current_location}"/bash/.bashrc "${target_folder}".bashrc
 
 # Swaylock effects
