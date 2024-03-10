@@ -17,6 +17,5 @@ cd "${Paru_folder}"
 
 makepkg -s
 
-Paru_file_name=$(find . -iname "paru*.pkg.tar.zst")
-array=(${Paru_file_name//// })
-sudo pacman -U "${array[-1]}"
+Paru_file_name=$(ls | grep x86_64.pkg.tar.zst | grep -v debug)
+sudo pacman -U "${Paru_file_name}"
