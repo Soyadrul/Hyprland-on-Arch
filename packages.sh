@@ -36,7 +36,7 @@ sudo pacman -S brightnessctl
 sudo pacman -S kitty
 
 # File manager
-sudo pacman -S nautilus
+sudo pacman -S nemo
 
 # Authentication agent
 sudo pacman -S polkit-kde-agent
