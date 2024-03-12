@@ -58,7 +58,7 @@ paru -S wlogout
 # App launcher
 sudo pacman -S wofi
 
-# To make ans edit screenshots
+# To make and edit screenshots
 sudo pacman -S grim slurp swappy
 
 # Gnome packages
