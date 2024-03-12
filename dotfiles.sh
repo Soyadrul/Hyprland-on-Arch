@@ -49,3 +49,8 @@ ln -s "${Current_location}"/bash/.bashrc "${target_folder}".bashrc
 target_folder="$HOME/.swaylock/"
 mkdir -p "${target_folder}"
 ln -s "${Current_location}"/swaylock/config "${target_folder}"config
+
+# Swappy - Snapshot editing tool
+target_folder="$HOME/.swappy/"
+mkdir -p "${target_folder}"
+ln -s "${Current_location}"/swappy/config "${target_folder}"config
