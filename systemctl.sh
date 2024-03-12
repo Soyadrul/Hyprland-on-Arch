@@ -1,8 +1,8 @@
 #! /usr/bin/bash
 
-systemctl enable sddm
-systemctl enable NetworkManager.service
-systemctl enable ModemManager.service
-systemctl enable bluetooth.service
+sudo systemctl enable sddm
+sudo systemctl enable NetworkManager.service
+sudo systemctl enable ModemManager.service
+sudo systemctl enable bluetooth.service
 #systemctl enable bluez
 
