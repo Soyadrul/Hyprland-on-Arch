@@ -58,6 +58,9 @@ paru -S wlogout
 # App launcher
 sudo pacman -S wofi
 
+# To make ans edit screenshots
+sudo pacman -S grim slurp swappy
+
 # Gnome packages
 sudo pacman -S gnome-calculator gnome-clocks gnome-text-editor
 # sudo pacman -S gnome-system-monitor gnome-weather
