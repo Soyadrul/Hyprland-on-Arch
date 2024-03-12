@@ -61,6 +61,9 @@ sudo pacman -S wofi
 # To make and edit screenshots
 sudo pacman -S grim slurp swappy
 
+# A redshift alternative for Wayland wlroots compositors
+sudo pacman -S gammastep
+
 # Gnome packages
 sudo pacman -S gnome-calculator gnome-clocks gnome-text-editor
 # sudo pacman -S gnome-system-monitor gnome-weather
