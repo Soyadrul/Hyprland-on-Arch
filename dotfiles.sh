@@ -51,6 +51,6 @@ mkdir -p "${target_folder}"
 ln -s "${Current_location}"/swaylock/config "${target_folder}"config
 
 # Swappy - Snapshot editing tool
-target_folder="$HOME/.swappy/"
+target_folder="$HOME/.config/swappy/"
 mkdir -p "${target_folder}"
 ln -s "${Current_location}"/swappy/config "${target_folder}"config
