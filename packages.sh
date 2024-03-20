@@ -2,7 +2,7 @@
 
 # Utilities
 sudo pacman -S git nano neofetch cmatrix telegram-desktop firefox vlc ffmpeg htop gtk2 gtk3 gtk4 mpv powertop qt5-wayland qt6-wayland wireplumber pipewire gnome-themes-extra nwg-look
-paru -S localsend-bin parabolic python-spotdl
+paru -S localsend-bin parabolic python-spotdl nwg-displays downgrade
 #sudo pacman -S zram-generator mpd
 #paru -S archlinux-tweak-tool-git
 
@@ -36,7 +36,7 @@ sudo pacman -S brightnessctl
 sudo pacman -S kitty
 
 # File manager
-sudo pacman -S nemo
+sudo pacman -S nautilus sushi nautilus-image-converter
 
 # Authentication agent
 sudo pacman -S polkit-kde-agent
