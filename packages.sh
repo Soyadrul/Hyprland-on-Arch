@@ -64,6 +64,9 @@ sudo pacman -S grim slurp swappy
 # A redshift alternative for Wayland wlroots compositors
 sudo pacman -S gammastep
 
+# Tool to choose CPU power mode (powersave/performance)
+paru -S auto-cpufreq
+
 # Gnome packages
 sudo pacman -S gnome-calculator gnome-clocks gnome-text-editor
 # sudo pacman -S gnome-system-monitor gnome-weather
