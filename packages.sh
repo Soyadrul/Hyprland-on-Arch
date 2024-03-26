@@ -67,6 +67,10 @@ sudo pacman -S gammastep
 # Tool to choose CPU power mode (powersave/performance)
 paru -S auto-cpufreq
 
+# To make and use virtual machines
+sudo pacman -S qemu-full
+paru -S quickemu
+
 # Gnome packages
 sudo pacman -S gnome-calculator gnome-clocks gnome-text-editor
 # sudo pacman -S gnome-system-monitor gnome-weather
