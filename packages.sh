@@ -11,7 +11,7 @@ sudo pacman -S hyprland hyprpaper xdg-desktop-portal-hyprland
 paru -S hyprpicker
 
 # Fonts
-sudo pacman -S otf-font-awesome ttf-roboto ttf-roboto-mono ttf-roboto-mono-nerd
+sudo pacman -S otf-font-awesome ttf-roboto ttf-roboto-mono ttf-roboto-mono-nerd noto-fonts-cjk
 
 # Bluetooth
 sudo pacman -S bluez bluez-utils blueman
