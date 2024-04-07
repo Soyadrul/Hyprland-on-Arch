@@ -54,3 +54,10 @@ ln -s "${Current_location}"/swaylock/config "${target_folder}"config
 target_folder="$HOME/.config/swappy/"
 mkdir -p "${target_folder}"
 ln -s "${Current_location}"/swappy/config "${target_folder}"config
+
+# Neofetch
+target_folder="$HOME/.config/neofetch/"
+mkdir -p "${target_folder}"
+rm -rf "${target_folder}"
+ln -s "${Current_location}"/neofetch/config.conf "${target_folder}"config.conf
+ln -s "${Current_location}"/neofetch/small.conf "${target_folder}"small.conf
