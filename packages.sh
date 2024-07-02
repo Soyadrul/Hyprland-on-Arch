@@ -65,7 +65,8 @@ sudo pacman -S grim slurp swappy
 sudo pacman -S gammastep
 
 # Tool to choose CPU power mode (powersave/performance)
-paru -S auto-cpufreq
+sudo pacman -S tlp
+#paru -S auto-cpufreq
 
 # To make and use virtual machines
 sudo pacman -S qemu-full
