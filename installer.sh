@@ -2,6 +2,11 @@
 
 Current_location=$(pwd)
 
+# To ignore the lid-switch operation (it will be managed by Hyprland on hyprland.conf file)
+echo -e "\nHandleLidSwitch=ignore
+HandleLidSwitchExternalPower=ignore
+HandleLidSwitchDocked=ignore" | sudo tee -a /etc/systemd/logind.conf
+
 # System upgrade
 sudo pacman -Syu
 
