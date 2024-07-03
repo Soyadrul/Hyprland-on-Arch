@@ -28,7 +28,6 @@ Light_Yellow="\[\e[93m\]"
 
 #PS1='[\u@\h \W]\$ '
 PS1="${Light_Red}┌──${Light_Blue}󰣇${Light_Green} (\u@\h) [\w]\n${Light_Red}└─${Light_Yellow}\$${Default_color} "
-#COMMAND_PROMPT="echo "ciao""
 
 
 export HISTCONTROL=ignoredups
