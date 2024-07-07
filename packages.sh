@@ -8,7 +8,7 @@ paru -S localsend-bin parabolic nwg-displays downgrade balena-etcher
 
 # Hyprland & co
 sudo pacman -S hyprland hyprpaper xdg-desktop-portal-hyprland
-paru -S hyprpicker
+paru -S hyprpicker hyprshade
 
 # Fonts
 sudo pacman -S otf-font-awesome ttf-roboto ttf-roboto-mono ttf-roboto-mono-nerd noto-fonts-cjk
@@ -62,7 +62,7 @@ sudo pacman -S wofi
 sudo pacman -S grim slurp swappy
 
 # A redshift alternative for Wayland wlroots compositors
-sudo pacman -S gammastep
+#sudo pacman -S gammastep
 
 # Tool to choose CPU power mode (powersave/performance)
 sudo pacman -S tlp
