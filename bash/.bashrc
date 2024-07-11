@@ -33,4 +33,6 @@ PS1="${Light_Red}┌──${Light_Blue}󰣇${Light_Green} (\u@\h) [\w]\n${Light_
 export HISTCONTROL=ignoredups
 HISTFILESIZE=100000
 
+export XDG_CONFIG_HOME=$HOME
+
 neofetch --config $HOME/.config/neofetch/small.conf --ascii_distro arch_small
