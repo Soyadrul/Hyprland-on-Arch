@@ -1,8 +1,8 @@
 #! /usr/bin/bash
 
 # Utilities
-sudo pacman -S git nano neofetch cmatrix telegram-desktop firefox vlc ffmpeg htop gtk2 gtk3 gtk4 mpv powertop qt5-wayland qt6-wayland wireplumber pipewire gnome-themes-extra nwg-look zram-generator
-paru -S localsend-bin parabolic nwg-displays downgrade balena-etcher
+sudo pacman -S git nano neofetch cmatrix telegram-desktop firefox vlc ffmpeg htop gtk2 gtk3 gtk4 mpv powertop qt5-wayland qt6-wayland wireplumber pipewire gnome-themes-extra nwg-look zram-generator man-pages-it
+paru -S localsend-bin parabolic nwg-displays downgrade balena-etcher dotool
 #sudo pacman -S mpd
 #paru -S archlinux-tweak-tool-git python-spotdl
 
