@@ -15,6 +15,8 @@ sudo pacman -Syu
 
 # Install the packages
 ./packages.sh
+# Add current user to input group, so the dotool utility becomes usable
+sudo usermod -a -G input $USER
 
 # Systemctl setup
 ./systemctl.sh
