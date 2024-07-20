@@ -45,10 +45,10 @@ target_folder="$HOME/"
 rm $HOME/.bashrc
 ln -s "${Current_location}"/bash/.bashrc "${target_folder}".bashrc
 
-# Swaylock effects
-target_folder="$HOME/.swaylock/"
+# Hyprlock
+target_folder="$HOME/.config/hypr/"
 mkdir -p "${target_folder}"
-ln -s "${Current_location}"/swaylock/config "${target_folder}"config
+ln -s "${Current_location}"/hypr/hyprlock.conf "${target_folder}"hyprlock.conf
 
 # Swappy - Snapshot editing tool
 target_folder="$HOME/.config/swappy/"

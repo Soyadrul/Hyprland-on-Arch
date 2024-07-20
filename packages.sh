@@ -7,7 +7,7 @@ paru -S localsend-bin parabolic nwg-displays downgrade balena-etcher
 #paru -S archlinux-tweak-tool-git python-spotdl
 
 # Hyprland & co
-sudo pacman -S hyprland hyprpaper xdg-desktop-portal-hyprland
+sudo pacman -S hyprland hyprpaper xdg-desktop-portal-hyprland hyprlock hyprcursor
 paru -S hyprpicker hyprshade
 
 # Fonts
@@ -47,7 +47,7 @@ paru -S sddm-sugar-candy-git
 
 # Sway window manager utilities
 sudo pacman -S swayidle
-paru -S swaylock-effects
+#paru -S swaylock-effects
 
 # Status bar
 sudo pacman -S waybar
