@@ -50,6 +50,11 @@ target_folder="$HOME/.config/hypr/"
 mkdir -p "${target_folder}"
 ln -s "${Current_location}"/hypr/hyprlock.conf "${target_folder}"hyprlock.conf
 
+# Hypridle
+target_folder="$HOME/.config/hypr/"
+mkdir -p "${target_folder}"
+ln -s "${Current_location}"/hypr/hypridle.conf "${target_folder}"hypridle.conf
+
 # Swappy - Snapshot editing tool
 target_folder="$HOME/.config/swappy/"
 mkdir -p "${target_folder}"
