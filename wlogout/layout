@@ -1,6 +1,6 @@
 {
     "label" : "lock",
-    "action" : "hyprlock",
+    "action" : "loginctl lock-session",
     "text" : "Lock",
     "keybind" : "l"
 }
@@ -12,7 +12,7 @@
 }
 {
     "label" : "logout",
-    "action" : "killall -u $USER -TERM",
+    "action" : "echo 'key super+m' | dotool",
     "text" : "Logout",
     "keybind" : "e"
 }
@@ -24,7 +24,7 @@
 }
 {
     "label" : "suspend",
-    "action" : "systemctl suspend",
+    "action" : "hyprctl dispatch dpms off ; systemctl suspend",
     "text" : "Suspend",
     "keybind" : "u"
 }
