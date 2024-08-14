@@ -24,7 +24,7 @@
 }
 {
     "label" : "suspend",
-    "action" : "hyprctl dispatch dpms off ; systemctl suspend",
+    "action" : "systemctl suspend",
     "text" : "Suspend",
     "keybind" : "u"
 }
