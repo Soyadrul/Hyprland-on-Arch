@@ -1,7 +1,7 @@
 #! /usr/bin/bash
 
 # Utilities
-sudo pacman -S git nano neofetch cmatrix telegram-desktop firefox vlc ffmpeg htop gtk2 gtk3 gtk4 mpv mpv-mpris powertop qt5-wayland qt6-wayland wireplumber pipewire gnome-themes-extra nwg-look zram-generator man-pages-it libva-mesa-driver mesa-vdpau radeontop libva-utils vdpauinfo intel-media-driver libva-intel-driver
+sudo pacman -S git nano neofetch cmatrix telegram-desktop firefox vlc ffmpeg htop gtk2 gtk3 gtk4 mpv mpv-mpris powertop qt5-wayland qt6-wayland wireplumber pipewire gnome-themes-extra nwg-look zram-generator man-pages-it libva-mesa-driver mesa-vdpau radeontop libva-utils vdpauinfo intel-media-driver libva-intel-driver flatpak
 paru -S localsend-bin parabolic nwg-displays downgrade balena-etcher dotool
 #sudo pacman -S mpd intel-gpu-tools
 #paru -S archlinux-tweak-tool-git python-spotdl
@@ -73,5 +73,4 @@ sudo pacman -S qemu-full
 paru -S quickemu
 
 # Gnome packages
-sudo pacman -S gnome-calculator gnome-clocks gnome-text-editor
-# sudo pacman -S gnome-system-monitor gnome-weather
+sudo pacman -S gnome-calculator gnome-clocks gnome-text-editor gnome-system-monitor gnome-weather
