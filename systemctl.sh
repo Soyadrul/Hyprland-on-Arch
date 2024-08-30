@@ -5,5 +5,6 @@ sudo systemctl enable NetworkManager.service
 sudo systemctl enable ModemManager.service
 sudo systemctl enable bluetooth.service
 sudo systemctl enable tlp.service
+sudo systemctl enable cups.service
 #systemctl enable bluez
 
