@@ -66,3 +66,9 @@ mkdir -p "${target_folder}"
 rm -rf "${target_folder}config.conf"
 ln -s "${Current_location}"/neofetch/config.conf "${target_folder}"config.conf
 ln -s "${Current_location}"/neofetch/small.conf "${target_folder}"small.conf
+
+# Mpv - Media player
+target_folder="$HOME/.config/mpv/"
+mkdir -p "${target_folder}"
+ln -s "${Current_location}"/mpv/mpv.conf "${target_folder}"mpv.conf
+ln -s "${Current_location}"/mpv/input.conf "${target_folder}"input.conf
