@@ -36,3 +36,21 @@ HISTFILESIZE=100000
 export XDG_CONFIG_HOME=$HOME
 
 neofetch --config $HOME/.config/neofetch/small.conf --ascii_distro arch_small
+
+
+
+
+Execute_Prompt_Command=false
+
+function prompt_command {
+    # Your custom command here
+    if [[ "$Execute_Prompt_Command" = "true" ]]
+    then
+        echo -e ""
+    else
+        Execute_Prompt_Command=true
+    fi
+}
+
+# Hook the function to the PROMPT_COMMAND variable
+PROMPT_COMMAND=prompt_command
