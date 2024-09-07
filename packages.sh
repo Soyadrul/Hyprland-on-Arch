@@ -2,7 +2,7 @@
 
 # Utilities
 sudo pacman -S git nano neofetch cmatrix telegram-desktop firefox vlc ffmpeg htop gtk2 gtk3 gtk4 mpv mpv-mpris powertop qt5-wayland qt6-wayland wireplumber pipewire gnome-themes-extra nwg-look zram-generator man-pages-it libva-mesa-driver mesa-vdpau radeontop libva-utils vdpauinfo intel-media-driver libva-intel-driver flatpak
-paru -S localsend-bin parabolic nwg-displays downgrade balena-etcher dotool
+paru -S localsend-bin parabolic nwg-displays downgrade balena-etcher dotool zen-browser-avx2-bin
 #sudo pacman -S mpd intel-gpu-tools
 #paru -S archlinux-tweak-tool-git python-spotdl
 
