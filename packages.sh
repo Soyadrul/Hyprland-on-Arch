@@ -73,7 +73,7 @@ sudo pacman -S qemu-full
 paru -S quickemu
 
 # Gnome packages
-sudo pacman -S gnome-calculator gnome-clocks gnome-text-editor gnome-system-monitor gnome-weather
+sudo pacman -S gnome-calculator gnome-clocks gnome-text-editor gnome-system-monitor gnome-weather gnome-disk-utility evince
 
 # Printer support
 sudo pacman -S cups cups-pdf bluez-cups cups-browsed system-config-printer hplip
