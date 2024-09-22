@@ -37,6 +37,11 @@ sudo pacman -S kitty
 
 # File manager
 sudo pacman -S nautilus sushi nautilus-image-converter
+paru -S nautilus-open-any-terminal
+gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal kitty
+gsettings set com.github.stunkymonkey.nautilus-open-any-terminal keybindings '<Ctrl><Alt>t'
+gsettings set com.github.stunkymonkey.nautilus-open-any-terminal new-tab true
+gsettings set com.github.stunkymonkey.nautilus-open-any-terminal flatpak system
 
 # Authentication agent
 sudo pacman -S polkit-kde-agent
