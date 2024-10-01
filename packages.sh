@@ -44,7 +44,8 @@ gsettings set com.github.stunkymonkey.nautilus-open-any-terminal new-tab true
 gsettings set com.github.stunkymonkey.nautilus-open-any-terminal flatpak system
 
 # Authentication agent
-sudo pacman -S polkit-kde-agent
+sudo pacman -S polkit-gnome
+#sudo pacman -S polkit-kde-agent
 
 # Login manager
 sudo pacman -S sddm
