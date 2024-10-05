@@ -44,7 +44,7 @@ neofetch --config $HOME/.config/neofetch/small.conf --ascii_distro arch_small
 Execute_Prompt_Command=false
 
 function prompt_command {
-	history -a; history -n
+    history -a; history -n
 	
     # Your custom command here
     if [[ "$Execute_Prompt_Command" = "true" ]]
