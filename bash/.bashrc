@@ -31,7 +31,8 @@ PS1="${Light_Red}┌──${Light_Blue}󰣇${Light_Green} (\u@\h) [\w]\n${Light_
 
 
 export HISTCONTROL=ignoredups
-HISTFILESIZE=100000
+export HISTFILESIZE=100000
+shopt -s histappend
 
 export XDG_CONFIG_HOME=$HOME
 
@@ -43,6 +44,8 @@ neofetch --config $HOME/.config/neofetch/small.conf --ascii_distro arch_small
 Execute_Prompt_Command=false
 
 function prompt_command {
+	history -a; history -n
+	
     # Your custom command here
     if [[ "$Execute_Prompt_Command" = "true" ]]
     then
