@@ -1,10 +1,17 @@
 #! /usr/bin/bash
 
 # Utilities
-sudo pacman -S git nano neofetch cmatrix telegram-desktop firefox vlc ffmpeg htop gtk2 gtk3 gtk4 mpv mpv-mpris powertop qt5-wayland qt6-wayland wireplumber pipewire gnome-themes-extra nwg-look zram-generator man-pages-it libva-mesa-driver mesa-vdpau radeontop libva-utils vdpauinfo intel-media-driver libva-intel-driver flatpak
+sudo pacman -S git nano neofetch cmatrix telegram-desktop firefox vlc ffmpeg htop gtk2 gtk3 gtk4 mpv mpv-mpris powertop qt5-wayland qt6-wayland wireplumber pipewire gnome-themes-extra nwg-look zram-generator man-pages-it flatpak libva-utils vdpauinfo
 paru -S localsend-bin parabolic nwg-displays downgrade balena-etcher dotool zen-browser-avx2-bin
-#sudo pacman -S mpd intel-gpu-tools
+#sudo pacman -S mpd
 #paru -S archlinux-tweak-tool-git python-spotdl
+
+# Hardware video acceleration for Intel
+sudo pacman -S intel-gpu-tools intel-media-driver libva-intel-driver lib32-libva-intel-driver mesa lib32-mesa vulkan-intel lib32-vulkan-intel
+#sudo pacman -S linux-firmware
+
+# Hardware video acceleration for AMD
+sudo pacman -S radeontop libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon
 
 # Hyprland & co
 sudo pacman -S hyprland hyprpaper xdg-desktop-portal-hyprland hyprlock hypridle hyprcursor
