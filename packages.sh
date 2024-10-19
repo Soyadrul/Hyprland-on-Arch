@@ -6,16 +6,23 @@ paru -S localsend-bin parabolic nwg-displays downgrade balena-etcher dotool zen-
 #sudo pacman -S mpd
 #paru -S archlinux-tweak-tool-git python-spotdl
 
-# Hardware video acceleration for Intel
-sudo pacman -S intel-gpu-tools intel-media-driver libva-intel-driver lib32-libva-intel-driver mesa lib32-mesa vulkan-intel lib32-vulkan-intel
-#sudo pacman -S linux-firmware
+# Hardware video acceleration
+vendor_id=$(grep -m1 'vendor_id' /proc/cpuinfo | awk '{print $3}')
+AMD_vendor_id="AuthenticAMD"
+Intel_vendor_id="GenuineIntel"
+# AMD
+if [[ "${vendor_id}" == "${AMD_vendor_id}" ]]; then
+	sudo pacman -S radeontop libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon
+# Intel
+elif [[ "${vendor_id}" == "${Intel_vendor_id}" ]]; then
+	sudo pacman -S intel-gpu-tools intel-media-driver libva-intel-driver lib32-libva-intel-driver mesa lib32-mesa vulkan-intel lib32-vulkan-intel linux-firmware
+# Unknown CPU
+else
+	echo "Unknown CPU vendor"
+	#libva-nvidia-driver nvidia-utils libvdpau lib32-libvdpau
+	#libva lib32-libva libva-utils libvarlink
+fi
 
-#libva-nvidia-driver nvidia-utils libvdpau lib32-libvdpau
-
-#libva lib32-libva libva-utils libvarlink
-
-# Hardware video acceleration for AMD
-sudo pacman -S radeontop libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon
 
 # Hyprland & co
 sudo pacman -S hyprland hyprpaper xdg-desktop-portal-hyprland hyprlock hypridle hyprcursor
