@@ -25,7 +25,7 @@ fi
 
 
 # Hyprland & co
-sudo pacman -S hyprland hyprpaper xdg-desktop-portal-hyprland hyprlock hypridle hyprcursor
+sudo pacman -S hyprland hyprpaper xdg-desktop-portal-hyprland hyprlock hypridle hyprcursor nwg-dock-hyprland
 paru -S hyprpicker hyprshade
 
 # Fonts
