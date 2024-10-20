@@ -22,7 +22,7 @@ window {
 
 #entry:selected {
     background-color: #bbccdd;
-    #background: linear-gradient(90deg, #bbffdd, #dd77ff);
+    /*background: linear-gradient(90deg, #bbffdd, #dd77ff);*/
 }
 
 #text:selected {
@@ -34,8 +34,8 @@ window {
     color: white;
     padding: 0.25em;
     border: 2px solid white;
-    #border-bottom-left-radius: 0px;
-    #border-bottom-right-radius: 0px;
+    /*border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;*/
 }
 
 #img {
