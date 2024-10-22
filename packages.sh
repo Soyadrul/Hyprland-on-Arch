@@ -103,3 +103,6 @@ sudo pacman -S gnome-calculator gnome-clocks gnome-text-editor gnome-system-moni
 # Printer support
 sudo pacman -S cups cups-pdf bluez-cups cups-browsed system-config-printer hplip
 #sudo pacman -S cups-pk-helper
+
+# Package used to display the keys pressed on Wayland
+sudo pacman -S wev
