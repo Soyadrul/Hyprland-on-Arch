@@ -45,12 +45,12 @@ target_folder="$HOME/"
 rm $HOME/.bashrc
 ln -s "${Current_location}"/bash/.bashrc "${target_folder}".bashrc
 
-# Hyprlock
+# Hyprlock - lock screen
 target_folder="$HOME/.config/hypr/"
 mkdir -p "${target_folder}"
 ln -s "${Current_location}"/hypr/hyprlock.conf "${target_folder}"hyprlock.conf
 
-# Hypridle
+# Hypridle - idle manager
 target_folder="$HOME/.config/hypr/"
 mkdir -p "${target_folder}"
 ln -s "${Current_location}"/hypr/hypridle.conf "${target_folder}"hypridle.conf
@@ -77,3 +77,7 @@ ln -s "${Current_location}"/mpv/input.conf "${target_folder}"input.conf
 target_folder="$HOME/.config/nwg-dock-hyprland/"
 mkdir -p "${target_folder}"
 ln -s "${Current_location}"/nwg-dock-hyprland/style.css "${target_folder}"style.css
+
+# SDDM - Login manager
+target_folder="/etc/"
+sudo ln -s "${Current_location}"/sddm/sddm.conf "${target_folder}"sddm.conf
