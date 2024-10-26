@@ -1,8 +1,8 @@
 #! /usr/bin/bash
 
 # Utilities
-sudo pacman -S git nano neofetch cmatrix telegram-desktop firefox vlc ffmpeg htop gtk2 gtk3 gtk4 mpv mpv-mpris powertop qt5-wayland qt6-wayland wireplumber pipewire gnome-themes-extra nwg-look zram-generator man-pages-it flatpak libva-utils vdpauinfo libva-vdpau-driver lib32-libva-vdpau-driver libvdpau-va-gl
-paru -S localsend-bin parabolic nwg-displays downgrade balena-etcher dotool zen-browser-avx2-bin
+sudo pacman -S git nano neofetch cmatrix telegram-desktop firefox vlc ffmpeg htop gtk2 gtk3 gtk4 mpv mpv-mpris powertop qt5-wayland qt6-wayland wireplumber pipewire gnome-themes-extra nwg-look nwg-displays zram-generator man-pages-it flatpak libva-utils vdpauinfo libva-vdpau-driver lib32-libva-vdpau-driver libvdpau-va-gl
+paru -S localsend-bin parabolic downgrade balena-etcher dotool zen-browser-avx2-bin
 #sudo pacman -S mpd
 #paru -S archlinux-tweak-tool-git python-spotdl
 
@@ -25,8 +25,8 @@ fi
 
 
 # Hyprland & co
-sudo pacman -S hyprland hyprpaper xdg-desktop-portal-hyprland hyprlock hypridle hyprcursor nwg-dock-hyprland
-paru -S hyprpicker hyprshade
+sudo pacman -S hyprland hyprpaper xdg-desktop-portal-hyprland hyprlock hypridle hyprcursor nwg-dock-hyprland hyprpicker
+paru -S hyprshade
 
 # Fonts
 sudo pacman -S otf-font-awesome ttf-roboto ttf-roboto-mono ttf-roboto-mono-nerd noto-fonts-cjk
@@ -41,8 +41,7 @@ sudo pacman -S networkmanager nm-connection-editor modemmanager usb_modeswitch n
 sudo pacman -S dunst libnotify
 
 # Clipboard manager
-sudo pacman -S cliphist wl-clipboard
-paru -S wl-clip-persist-git
+sudo pacman -S cliphist wl-clipboard wl-clip-persist
 
 # Audio
 sudo pacman -S pamixer
