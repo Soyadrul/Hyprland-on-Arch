@@ -81,3 +81,8 @@ ln -s "${Current_location}"/nwg-dock-hyprland/style.css "${target_folder}"style.
 # SDDM - Login manager
 target_folder="/etc/"
 sudo ln -s "${Current_location}"/sddm/sddm.conf "${target_folder}"sddm.conf
+
+# sugar-candy - SDDM theme
+target_folder="/usr/share/sddm/themes/sugar-candy/"
+sudo mv "${target_folder}"theme.conf "${target_folder}"theme.conf.old
+sudo cp "${Current_location}"/sddm/sugar-candy/theme.conf "${target_folder}"theme.conf
