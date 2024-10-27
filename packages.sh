@@ -1,10 +1,10 @@
 #! /usr/bin/bash
 
 # Utilities
-sudo pacman -S git nano neofetch cmatrix telegram-desktop firefox vlc ffmpeg htop gtk2 gtk3 gtk4 mpv mpv-mpris powertop qt5-wayland qt6-wayland wireplumber pipewire gnome-themes-extra nwg-look nwg-displays zram-generator man-pages-it flatpak libva-utils vdpauinfo libva-vdpau-driver lib32-libva-vdpau-driver libvdpau-va-gl
-paru -S localsend-bin parabolic downgrade balena-etcher dotool zen-browser-avx2-bin
-#sudo pacman -S mpd
-#paru -S archlinux-tweak-tool-git python-spotdl
+pacman="git nano neofetch cmatrix telegram-desktop firefox vlc ffmpeg htop gtk2 gtk3 gtk4 mpv mpv-mpris powertop qt5-wayland qt6-wayland wireplumber pipewire gnome-themes-extra nwg-look nwg-displays zram-generator man-pages-it flatpak libva-utils vdpauinfo libva-vdpau-driver lib32-libva-vdpau-driver libvdpau-va-gl "
+#mpd
+paru="localsend-bin parabolic downgrade balena-etcher dotool zen-browser-avx2-bin "
+#archlinux-tweak-tool-git python-spotdl
 
 # Hardware video acceleration
 vendor_id=$(grep -m1 'vendor_id' /proc/cpuinfo | awk '{print $3}')
@@ -12,10 +12,10 @@ AMD_vendor_id="AuthenticAMD"
 Intel_vendor_id="GenuineIntel"
 # AMD
 if [[ "${vendor_id}" == "${AMD_vendor_id}" ]]; then
-	sudo pacman -S radeontop libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon
+	pacman+="radeontop libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon "
 # Intel
 elif [[ "${vendor_id}" == "${Intel_vendor_id}" ]]; then
-	sudo pacman -S intel-gpu-tools intel-media-driver libva-intel-driver lib32-libva-intel-driver mesa lib32-mesa vulkan-intel lib32-vulkan-intel linux-firmware
+	pacman+="intel-gpu-tools intel-media-driver libva-intel-driver lib32-libva-intel-driver mesa lib32-mesa vulkan-intel lib32-vulkan-intel linux-firmware "
 # Unknown CPU
 else
 	echo "Unknown CPU vendor"
@@ -25,83 +25,90 @@ fi
 
 
 # Hyprland & co
-sudo pacman -S hyprland hyprpaper xdg-desktop-portal-hyprland hyprlock hypridle hyprcursor nwg-dock-hyprland hyprpicker
-paru -S hyprshade
+pacman+="hyprland hyprpaper xdg-desktop-portal-hyprland hyprlock hypridle hyprcursor nwg-dock-hyprland hyprpicker "
+paru+="hyprshade "
 
 # Fonts
-sudo pacman -S otf-font-awesome ttf-roboto ttf-roboto-mono ttf-roboto-mono-nerd noto-fonts-cjk
+pacman+="otf-font-awesome ttf-roboto ttf-roboto-mono ttf-roboto-mono-nerd noto-fonts-cjk "
 
 # Bluetooth
-sudo pacman -S bluez bluez-utils blueman
+pacman+="bluez bluez-utils blueman "
 
 # Network
-sudo pacman -S networkmanager nm-connection-editor modemmanager usb_modeswitch network-manager-applet
+pacman+="networkmanager nm-connection-editor modemmanager usb_modeswitch network-manager-applet "
 
 # Notifications
-sudo pacman -S dunst libnotify
+pacman+="dunst libnotify "
 
 # Clipboard manager
-sudo pacman -S cliphist wl-clipboard wl-clip-persist
+pacman+="cliphist wl-clipboard wl-clip-persist "
 
 # Audio
-sudo pacman -S pamixer
+pacman+="pamixer "
 
 # Brightness
-sudo pacman -S brightnessctl
+pacman+="brightnessctl "
 
 # Terminal emulator
-sudo pacman -S kitty
+pacman+="kitty "
 
 # File manager
-sudo pacman -S nautilus sushi nautilus-image-converter
-paru -S nautilus-open-any-terminal
-gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal kitty
-gsettings set com.github.stunkymonkey.nautilus-open-any-terminal keybindings '<Ctrl><Alt>t'
-gsettings set com.github.stunkymonkey.nautilus-open-any-terminal new-tab true
-gsettings set com.github.stunkymonkey.nautilus-open-any-terminal flatpak system
+pacman+="nautilus sushi nautilus-image-converter "
+paru+="nautilus-open-any-terminal "
 
 # Authentication agent
-sudo pacman -S polkit-gnome
-#sudo pacman -S polkit-kde-agent
+pacman+="polkit-gnome "
+#polkit-kde-agent
 
 # Login manager
-sudo pacman -S sddm
-paru -S sddm-sugar-candy-git
+pacman+="sddm "
+paru+="sddm-sugar-candy-git "
 
 # Sway window manager utilities
 #sudo pacman -S swayidle
 #paru -S swaylock-effects
 
 # Status bar
-sudo pacman -S waybar
+pacman+="waybar "
 
 # Logout menu
-paru -S wlogout
+paru+="wlogout "
 
 # App launcher
-sudo pacman -S wofi
+pacman+="wofi "
 
 # To make and edit screenshots
-sudo pacman -S grim slurp swappy
+pacman+="grim slurp swappy "
 
 # A redshift alternative for Wayland wlroots compositors
 #sudo pacman -S gammastep
 
 # Tool to choose CPU power mode (powersave/performance)
-sudo pacman -S tlp
+pacman+="tlp "
 #paru -S auto-cpufreq
 
 # To make and use virtual machines
-sudo pacman -S qemu-full
-paru -S quickemu
+pacman+="qemu-full "
+paru+="quickemu "
 
 # Gnome packages
-sudo pacman -S gnome-calculator gnome-clocks gnome-text-editor gnome-system-monitor gnome-weather gnome-disk-utility evince eog cheese
-#sudo pacman -S gnome-tweaks
+pacman+="gnome-calculator gnome-clocks gnome-text-editor gnome-system-monitor gnome-weather gnome-disk-utility evince eog cheese "
+#gnome-tweaks
 
 # Printer support
-sudo pacman -S cups cups-pdf bluez-cups cups-browsed system-config-printer hplip
-#sudo pacman -S cups-pk-helper
+pacman+="cups cups-pdf bluez-cups cups-browsed system-config-printer hplip "
+#cups-pk-helper
 
 # Package used to display the keys pressed on Wayland
-sudo pacman -S wev
+pacman+="wev "
+
+
+# Downloading the packages
+sudo pacman -S ${pacman}
+paru -S ${paru}
+
+# Add "Open with kitty" button on nautilus file manager
+gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal kitty
+gsettings set com.github.stunkymonkey.nautilus-open-any-terminal keybindings '<Ctrl><Alt>t'
+gsettings set com.github.stunkymonkey.nautilus-open-any-terminal new-tab true
+gsettings set com.github.stunkymonkey.nautilus-open-any-terminal flatpak system
