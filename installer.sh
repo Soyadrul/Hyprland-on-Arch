@@ -11,16 +11,16 @@ HandleLidSwitchDocked=ignore" | sudo tee -a /etc/systemd/logind.conf
 sudo pacman -Syu
 
 # Install Paru (AUR helper)
-./aur.sh
+bash aur.sh
 
 # Install the packages
-./packages.sh
+bash packages.sh
 # Add current user to input group, so the dotool utility becomes usable
 sudo usermod -a -G input $USER
 
 # Systemctl setup
-./systemctl.sh
+bash systemctl.sh
 
 # Creating simlinks for the dotfiles
 cd "${Current_location}"
-./dotfiles.sh
+bash dotfiles.sh

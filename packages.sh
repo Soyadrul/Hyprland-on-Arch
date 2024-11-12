@@ -26,7 +26,8 @@ fi
 
 # Hyprland & co
 pacman+="hyprland hyprpaper xdg-desktop-portal-hyprland hyprlock hypridle hyprcursor nwg-dock-hyprland hyprpicker "
-paru+="hyprshade "
+paru+="hyprsunset-git "
+#paru+="hyprshade "
 
 # Fonts
 pacman+="otf-font-awesome ttf-roboto ttf-roboto-mono ttf-roboto-mono-nerd noto-fonts-cjk "
