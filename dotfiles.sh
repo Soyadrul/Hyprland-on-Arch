@@ -86,3 +86,8 @@ sudo ln -s "${Current_location}"/sddm/sddm.conf "${target_folder}"sddm.conf
 target_folder="/usr/share/sddm/themes/sugar-candy/"
 sudo mv "${target_folder}"theme.conf "${target_folder}"theme.conf.old
 sudo cp "${Current_location}"/sddm/sugar-candy/theme.conf "${target_folder}"theme.conf
+
+# Hyprland scripts
+target_folder="$HOME/.config/hypr/scripts/blue-light/"
+mkdir -p "${target_folder}"
+ln -s "${Current_location}"/hypr/scripts/blue-light/* "${target_folder}"
