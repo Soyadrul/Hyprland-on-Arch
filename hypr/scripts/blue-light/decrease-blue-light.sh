@@ -20,6 +20,7 @@ decrease_blue_light(){
     else
         blue_light=${max_blue_light}
         echo "${blue_light}" > $HOME/.config/hypr/scripts/blue-light/temperature
+        kill $(pidof hyprsunset) # To kill the old instances
         notify-send --icon=/usr/share/icons/Adwaita/symbolic/status/night-light-disabled-symbolic.svg --replace-id=1000000 "Night light" "Blue light filter turned off"
         hyprsunset -i
     fi
