@@ -12,7 +12,7 @@ AMD_vendor_id="AuthenticAMD"
 Intel_vendor_id="GenuineIntel"
 # AMD
 if [[ "${vendor_id}" == "${AMD_vendor_id}" ]]; then
-	pacman+="radeontop libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon "
+	pacman+="radeontop mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon "
 # Intel
 elif [[ "${vendor_id}" == "${Intel_vendor_id}" ]]; then
 	pacman+="intel-gpu-tools intel-media-driver libva-intel-driver lib32-libva-intel-driver mesa lib32-mesa vulkan-intel lib32-vulkan-intel linux-firmware "
@@ -93,7 +93,7 @@ pacman+="qemu-full "
 paru+="quickemu "
 
 # Gnome packages
-pacman+="gnome-calculator gnome-clocks gnome-text-editor gnome-system-monitor gnome-weather gnome-disk-utility evince eog cheese "
+pacman+="gnome-calculator gnome-clocks gnome-text-editor gnome-system-monitor gnome-weather gnome-disk-utility evince eog cheese gthumb "
 #gnome-tweaks
 
 # Printer support
