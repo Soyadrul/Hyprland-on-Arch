@@ -91,3 +91,8 @@ sudo cp "${Current_location}"/sddm/sugar-candy/theme.conf "${target_folder}"them
 target_folder="$HOME/.config/hypr/scripts/blue-light/"
 mkdir -p "${target_folder}"
 ln -s "${Current_location}"/hypr/scripts/blue-light/* "${target_folder}"
+
+# Hyprpaper
+target_folder="$HOME/.config/hypr/"
+mkdir -p "${target_folder}"
+ln -s "${Current_location}"/hypr/hyprpaper.conf "${target_folder}"hyprpaper.conf
