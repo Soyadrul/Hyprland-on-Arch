@@ -1,7 +1,7 @@
 #! /usr/bin/bash
 
 # Utilities
-pacman="git nano neofetch cmatrix telegram-desktop firefox vlc ffmpeg htop gtk2 gtk3 gtk4 mpv mpv-mpris powertop qt5-wayland qt6-wayland wireplumber pipewire gnome-themes-extra nwg-look nwg-displays zram-generator man-pages-it flatpak libva-utils vdpauinfo lib32-libva-vdpau-driver libvdpau-va-gl "
+pacman="git nano neofetch cmatrix telegram-desktop firefox vlc ffmpeg htop gtk2 gtk3 gtk4 mpv mpv-mpris powertop qt5-wayland qt6-wayland wireplumber pipewire gnome-themes-extra nwg-look nwg-displays zram-generator man-pages-it flatpak libva-utils vdpauinfo lib32-libva-vdpau-driver libvdpau-va-gl resources "
 #libva-vdpau-driver
 #mpd
 paru="localsend-bin parabolic-gtk downgrade balena-etcher dotool zen-browser-avx2-bin "
@@ -94,8 +94,8 @@ pacman+="qemu-full "
 paru+="quickemu "
 
 # Gnome packages
-pacman+="gnome-calculator gnome-clocks gnome-text-editor gnome-system-monitor gnome-weather gnome-disk-utility evince eog cheese gthumb "
-#gnome-tweaks
+pacman+="gnome-calculator gnome-clocks gnome-text-editor gnome-weather gnome-disk-utility evince eog cheese gthumb "
+#gnome-system-monitor gnome-tweaks
 
 # Printer support
 pacman+="cups cups-pdf bluez-cups cups-browsed system-config-printer hplip "
