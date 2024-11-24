@@ -23,15 +23,20 @@
         // "disable-scroll": true,
         // "all-outputs": false,
         // "warp-on-scroll": false,
+        "active-only": false,
+        /* "ignore-workspaces": [
+            "^[3-9]+$",
+            "^[0-9]{2}$"
+        ], */
         "format": "{name}",
         // "format": "{name}: {icon}",
         "format-icons": {
-            "1": "",
+            "1": " ",
             "2": "",
-            "3": "",
+            "3": " ",
             "4": "",
             "5": "",
-            "urgent": "",
+            "urgent": " ",
             "focused": "",
             "default": ""
         },
@@ -136,7 +141,7 @@
 	    }
     },
     "cpu": {
-        "format": "{usage}% ",
+        "format": "{usage}%  ",
         "tooltip": false
         
     },
@@ -178,7 +183,7 @@
         "tooltip-format-charging": "{time}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["", "", "", "", ""],
+        "format-icons": [" ", " ", " ", " ", " "],
         "format-time": "{H} h {M} min",
         "interval": 5
     },
@@ -188,7 +193,7 @@
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "max-length": 25,
-        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-wifi": "{essid} ({signalStrength}%)  ",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
@@ -217,15 +222,15 @@
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",
         "format-source": "{volume}% ",
-        "format-source-muted": "",
+        "format-source-muted": " ",
         "format-icons": {
-            "headphone": "",
+            "headphone": " ",
             "hands-free": "",
             "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
+            "phone": " ",
+            "portable": " ",
+            "car": " ",
+            "default": ["", "", " "]
         },
         // "on-click": "pavucontrol"
     },
