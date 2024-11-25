@@ -52,17 +52,35 @@ button:hover {
 
 #workspaces button {
     padding: 0 0.4em;
-    background-color: transparent;
+    background-color: #64727D;
     color: #ffffff;
     border-radius: 0.7em;
+    transition-duration: 0.0s;
+    box-shadow: inset -3 -3px #ffffff;
 }
 
 #workspaces button:hover {
     background: rgba(0, 0, 0, 0.2);
 }
 
+#workspaces button.empty:hover {
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: inset -3 -3px #000000;
+}
+
 #workspaces button.active {
     background-color: #64727D;
+    box-shadow: inset -2 -2px #ffffff;
+    padding: 0.0em 1.2em;
+    /* border-radius: 3.0em; */
+}
+
+#workspaces button.empty {
+    background-color: #000000;
+}
+
+#workspaces button.empty.active {
+    background-color: #000000;
     box-shadow: inset -2 -2px #ffffff;
 }
 
