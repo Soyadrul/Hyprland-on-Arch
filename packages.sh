@@ -58,6 +58,9 @@ pacman+="kitty "
 pacman+="nautilus sushi nautilus-image-converter "
 paru+="nautilus-open-any-terminal "
 
+# Cloud app - Mega
+paru+="megasync-bin nautilus-megasync "
+
 # Authentication agent
 pacman+="polkit-gnome "
 #polkit-kde-agent
