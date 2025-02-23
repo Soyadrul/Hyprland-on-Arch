@@ -1,10 +1,10 @@
 #! /usr/bin/bash
 
 # Utilities
-pacman="git nano neofetch cmatrix telegram-desktop firefox vlc ffmpeg htop gtk2 gtk3 gtk4 mpv mpv-mpris powertop qt5-wayland qt6-wayland wireplumber pipewire gnome-themes-extra nwg-look nwg-displays zram-generator man-pages-it flatpak libva-utils vdpauinfo lib32-libva-vdpau-driver libvdpau-va-gl resources thunderbird libreoffice-still python-pip "
+pacman="git nano neofetch cmatrix telegram-desktop firefox vlc ffmpeg htop gtk2 gtk3 gtk4 mpv mpv-mpris powertop qt5-wayland qt6-wayland wireplumber pipewire gnome-themes-extra nwg-look nwg-displays zram-generator man-pages-it flatpak libva-utils vdpauinfo lib32-libva-vdpau-driver libvdpau-va-gl resources thunderbird libreoffice-still python-pip fzf "
 #libva-vdpau-driver
 #mpd
-paru="localsend-bin parabolic-gtk downgrade balena-etcher dotool zen-browser-avx2-bin "
+paru="localsend-bin parabolic-gtk downgrade balena-etcher dotool zen-browser-bin "
 #archlinux-tweak-tool-git python-spotdl
 
 # Hardware video acceleration
