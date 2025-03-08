@@ -26,8 +26,7 @@ fi
 
 
 # Hyprland & co
-pacman+="hyprland hyprpaper xdg-desktop-portal-hyprland hyprlock hypridle hyprcursor nwg-dock-hyprland hyprpicker hyprland-qtutils "
-paru+="hyprsunset "
+pacman+="hyprland hyprpaper xdg-desktop-portal-hyprland hyprlock hypridle hyprcursor nwg-dock-hyprland hyprpicker hyprland-qtutils hyprsunset "
 #paru+="hyprshade "
 
 # Fonts
