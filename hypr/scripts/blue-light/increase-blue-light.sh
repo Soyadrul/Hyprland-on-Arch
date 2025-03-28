@@ -16,8 +16,7 @@ increase_blue_light(){
 
     echo "${blue_light}" > $HOME/.config/hypr/scripts/blue-light/temperature
     notify-send --icon=/usr/share/icons/Adwaita/symbolic/status/night-light-symbolic.svg --replace-id=1000000 "Night light" "Blue light filter: $(echo "${blue_light}")"
-    #hyprctl hyprsunset temperature ${blue_light}
-    hyprsunset --temperature ${blue_light}
+    hyprctl hyprsunset temperature ${blue_light}
 }
 
 increase_blue_light
