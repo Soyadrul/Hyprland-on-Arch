@@ -4,7 +4,7 @@
 pacman="git nano neofetch cmatrix telegram-desktop firefox vlc ffmpeg htop gtk2 gtk3 gtk4 mpv mpv-mpris powertop qt5-wayland qt6-wayland wireplumber pipewire gnome-themes-extra nwg-look nwg-displays zram-generator man-pages-it flatpak libva-utils vdpauinfo lib32-libva-vdpau-driver libvdpau-va-gl resources thunderbird libreoffice-still python-pip fzf "
 #libva-vdpau-driver
 #mpd
-paru="localsend-bin parabolic-gtk downgrade balena-etcher dotool zen-browser-bin "
+aur="localsend-bin parabolic-gtk downgrade balena-etcher dotool zen-browser-bin "
 #archlinux-tweak-tool-git python-spotdl
 
 # Hardware video acceleration
@@ -27,7 +27,7 @@ fi
 
 # Hyprland & co
 pacman+="hyprland hyprpaper xdg-desktop-portal-hyprland hyprlock hypridle hyprcursor nwg-dock-hyprland hyprpicker hyprland-qtutils hyprsunset "
-#paru+="hyprshade "
+#aur+="hyprshade "
 
 # Fonts
 pacman+="otf-font-awesome ttf-roboto ttf-roboto-mono ttf-roboto-mono-nerd noto-fonts-cjk "
@@ -55,10 +55,10 @@ pacman+="kitty "
 
 # File manager
 pacman+="nautilus sushi nautilus-image-converter "
-paru+="nautilus-open-any-terminal "
+aur+="nautilus-open-any-terminal "
 
 # Cloud app - Mega
-paru+="megasync-bin nautilus-megasync "
+aur+="megasync-bin nautilus-megasync "
 
 # Authentication agent
 pacman+="polkit-gnome "
@@ -66,17 +66,17 @@ pacman+="polkit-gnome "
 
 # Login manager
 pacman+="sddm "
-paru+="sddm-sugar-candy-git "
+aur+="sddm-sugar-candy-git "
 
 # Sway window manager utilities
 #sudo pacman -S swayidle
-#paru -S swaylock-effects
+#aur -S swaylock-effects
 
 # Status bar
 pacman+="waybar "
 
 # Logout menu
-paru+="wlogout "
+aur+="wlogout "
 
 # App launcher
 pacman+="wofi "
@@ -89,11 +89,11 @@ pacman+="grim slurp swappy "
 
 # Tool to choose CPU power mode (powersave/performance)
 pacman+="tlp "
-#paru -S auto-cpufreq
+#aur -S auto-cpufreq
 
 # To make and use virtual machines
 pacman+="qemu-full "
-paru+="quickemu "
+aur+="quickemu "
 
 # Gnome packages
 pacman+="gnome-calculator gnome-clocks gnome-text-editor gnome-weather gnome-disk-utility evince eog cheese gthumb "
@@ -109,7 +109,7 @@ pacman+="wev "
 
 # Downloading the packages
 sudo pacman -S ${pacman}
-paru -S ${paru}
+paru -S ${aur}
 
 # Add "Open with kitty" button on nautilus file manager
 gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal kitty
