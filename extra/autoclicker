@@ -4,11 +4,12 @@ DELAY=1.0 # Seconds between 2 consecutive clicks
 STOP_KEY="q" # Key to stop the autoclicker
 INITIAL_PAUSE=5 # Pause before starting the autoclicker
 NOTIFY=false # If there should be a notification when a click occurs
+SOUND="/usr/share/sounds/freedesktop/stereo/complete.oga" # Notification sound heard when a click occurs (if enabled)
 
 args=("${@}") # Store all arguments in an indexed array
 len=${#args[@]} # Get the number of arguments
 
-# for cycle for every input
+# check every input
 for ((i=0; i<len; i++)); do
     if [[ "${args[i]}" == "--notify" ]]; then
         NOTIFY=true
@@ -20,18 +21,32 @@ for ((i=0; i<len; i++)); do
     fi
 done
 
-echo "L'autoclicker inizierà tra ${INITIAL_PAUSE} secondi con un delay di ${DELAY} secondi tra i click"
+read -p "The autoclicker will start in ${INITIAL_PAUSE} seconds with a delay of ${DELAY} seconds between clicks [y|N] " continue
+continue=$(echo "${continue}" | tr '[:lower:]' '[:upper:]')
+if [[ ${continue} != "Y" ]]; then
+    exit 0 # Terminate (with success)
+fi
+
+# Countdown
 for ((n=${INITIAL_PAUSE}; n>=1; n--))
 do
-    echo -e "${n}"
-    sleep 1
+    echo -n "${n}"
+    sleep 0.25
+    echo -n "."
+    sleep 0.25
+    echo -n "."
+    sleep 0.25
+    echo -n "."
+    sleep 0.25
 done
+
+echo -e "0\n"
 
 clicks(){
     while true; do
         echo click left
         if [[ "${1}" == "true" ]]; then
-            paplay "/usr/share/sounds/freedesktop/stereo/complete.oga"
+            paplay "${SOUND}"
         fi
         sleep "${DELAY}"
     done
@@ -43,16 +58,16 @@ clicks ${NOTIFY} | dotool &
 CLICK_PID=$!
 
 # Loop to listen if the STOP_KEY is pressed
-echo "Premi '${STOP_KEY}' per interrompere l'autoclicker."
+echo "Press '${STOP_KEY}' to stop the autoclicker."
 
 while true; do
     read -n 1 key
     if [[ "${key}" == "${STOP_KEY}" ]]; then
-        echo -e "\nInterruzione in corso..."
+        echo -e "\nInterruption in progress..."
         kill "${CLICK_PID}"
         wait "${CLICK_PID}" 2>/dev/null
         break
     fi
 done
 
-echo "Autoclicker terminato."
+echo "Autoclicker stopped."
