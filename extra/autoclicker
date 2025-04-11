@@ -1,0 +1,58 @@
+#! /usr/bin/bash
+
+DELAY=1.0 # Seconds between 2 consecutive clicks
+STOP_KEY="q" # Key to stop the autoclicker
+INITIAL_PAUSE=5 # Pause before starting the autoclicker
+NOTIFY=false # If there should be a notification when a click occurs
+
+args=("${@}") # Store all arguments in an indexed array
+len=${#args[@]} # Get the number of arguments
+
+# for cycle for every input
+for ((i=0; i<len; i++)); do
+    if [[ "${args[i]}" == "--notify" ]]; then
+        NOTIFY=true
+    elif [[ "${args[i]}" == "--delay" ]]; then
+        ((i++))
+        DELAY="${args[i]}"
+    else
+        echo ""
+    fi
+done
+
+echo "L'autoclicker inizierà tra ${INITIAL_PAUSE} secondi con un delay di ${DELAY} secondi tra i click"
+for ((n=${INITIAL_PAUSE}; n>=1; n--))
+do
+    echo -e "${n}"
+    sleep 1
+done
+
+clicks(){
+    while true; do
+        echo click left
+        if [[ "${1}" == "true" ]]; then
+            paplay "/usr/share/sounds/freedesktop/stereo/complete.oga"
+        fi
+        sleep "${DELAY}"
+    done
+}
+
+clicks ${NOTIFY} | dotool &
+
+# Save the PID of the process so you can terminate it
+CLICK_PID=$!
+
+# Loop to listen if the STOP_KEY is pressed
+echo "Premi '${STOP_KEY}' per interrompere l'autoclicker."
+
+while true; do
+    read -n 1 key
+    if [[ "${key}" == "${STOP_KEY}" ]]; then
+        echo -e "\nInterruzione in corso..."
+        kill "${CLICK_PID}"
+        wait "${CLICK_PID}" 2>/dev/null
+        break
+    fi
+done
+
+echo "Autoclicker terminato."
