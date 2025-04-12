@@ -1,30 +1,75 @@
 #! /usr/bin/bash
 
+# Function to check if a number is a positive real number
+is_positive_real() {
+    local num="$1"
+    local is_real=0
+    local is_not_real=1
+
+    # Check if the input is empty or contains only spaces
+    if [[ -z "$num" || "$num" =~ ^\s+$ ]]; then
+        return ${is_not_real} # Not a positive real number
+    fi
+
+    # Check if the input is a valid floating-point number
+    if [[ ! "$num" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
+        return ${is_not_real} # Not a positive real number
+    fi
+
+    # Check if the number is greater than zero
+    if (( $(echo "$num > 0" | bc -l) )); then
+        return ${is_real} # Positive real number
+    else
+        return ${is_not_real} # Not a positive real number
+    fi
+}
+
+
 DELAY=1.0 # Seconds between 2 consecutive clicks
 STOP_KEY="q" # Key to stop the autoclicker
 INITIAL_PAUSE=5 # Pause before starting the autoclicker
-NOTIFY=false # If there should be a notification when a click occurs
+NOTIFY=false # If there should be a sound notification when a click occurs
 SOUND="/usr/share/sounds/freedesktop/stereo/complete.oga" # Notification sound heard when a click occurs (if enabled)
 
+# Colors
+Default_color="\033[0;00m"
+Blue="\033[0;34m"
+Light_Blue="\033[0;94m"
+Cyan="\033[0;36m"
+Light_Cyan="\033[0;96m"
+
+command_name="autoclicker"
 args=("${@}") # Store all arguments in an indexed array
 len=${#args[@]} # Get the number of arguments
 
-# check every input
+# Check every input
 for ((i=0; i<len; i++)); do
     if [[ "${args[i]}" == "--notify" ]]; then
         NOTIFY=true
     elif [[ "${args[i]}" == "--delay" ]]; then
         ((i++))
         DELAY="${args[i]}"
+        is_positive_real ${DELAY}
+        if [[ $? == 1 ]];then # Check the exit status of the previously executed command (in this case is_positive_real)
+            echo "ERROR... The delay MUST be expressed with a real positive number (--delay 7, --delay 3.14, etc.)"
+            exit 1 # Terminate (error)
+        fi
+    elif [[ "${args[i]}" == "--help" || "${args[i]}" == "-h" ]]; then
+        echo -e "Usage: ${command_name} ${Light_Blue}[options]"
+        echo -e "${Light_Blue}--help${Default_color}/${Light_Blue}-h ${Default_color}              show this message"
+        echo -e "${Light_Blue}--notify${Default_color}/${Light_Blue}-n ${Default_color}            make a sound notification when a click occurs (this adds an overhead so the delay between 2 clicks will take more time)"
+        echo -e "${Light_Blue}--delay${Default_color}/${Light_Blue}-d <seconds> ${Default_color}   specify the delay (a positive real number) between 2 clicks"
+        exit 0 # Terminate (success)
     else
-        echo ""
+        echo "ERROR... The option '${args[i]}' does not exist"
+        exit 1 # Terminate (error)
     fi
 done
 
 read -p "The autoclicker will start in ${INITIAL_PAUSE} seconds with a delay of ${DELAY} seconds between clicks [y|N] " continue
 continue=$(echo "${continue}" | tr '[:lower:]' '[:upper:]')
 if [[ ${continue} != "Y" ]]; then
-    exit 0 # Terminate (with success)
+    exit 0 # Terminate (success)
 fi
 
 # Countdown
