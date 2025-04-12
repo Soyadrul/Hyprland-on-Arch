@@ -44,9 +44,9 @@ len=${#args[@]} # Get the number of arguments
 
 # Check every input
 for ((i=0; i<len; i++)); do
-    if [[ "${args[i]}" == "--notify" ]]; then
+    if [[ "${args[i]}" == "--notify" || "${args[i]}" == "-n" ]]; then
         NOTIFY=true
-    elif [[ "${args[i]}" == "--delay" ]]; then
+    elif [[ "${args[i]}" == "--delay" || "${args[i]}" == "-d" ]]; then
         ((i++))
         DELAY="${args[i]}"
         is_positive_real ${DELAY}
