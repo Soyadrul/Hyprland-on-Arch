@@ -1,11 +1,14 @@
 #! /usr/bin/bash
 
 # Utilities
-pacman="git nano neofetch cmatrix telegram-desktop firefox vlc ffmpeg htop gtk2 gtk3 gtk4 mpv mpv-mpris powertop qt5-wayland qt6-wayland wireplumber pipewire gnome-themes-extra nwg-look nwg-displays zram-generator man-pages-it flatpak libva-utils vdpauinfo lib32-libva-vdpau-driver libvdpau-va-gl resources thunderbird libreoffice-still python-pip fzf "
+pacman="git nano neofetch telegram-desktop firefox vlc ffmpeg htop gtk2 gtk3 gtk4 mpv mpv-mpris powertop qt5-wayland qt6-wayland wireplumber pipewire gnome-themes-extra nwg-look nwg-displays zram-generator man-pages-it flatpak libva-utils vdpauinfo lib32-libva-vdpau-driver libvdpau-va-gl resources thunderbird libreoffice-still python-pip fzf bc "
 #libva-vdpau-driver
 #mpd
 aur="localsend-bin parabolic-gtk downgrade balena-etcher dotool zen-browser-bin "
 #archlinux-tweak-tool-git python-spotdl
+
+# Fun
+pacman+="cmatrix sl cowsay figlet "
 
 # Hardware video acceleration
 vendor_id=$(grep -m1 'vendor_id' /proc/cpuinfo | awk '{print $3}')
