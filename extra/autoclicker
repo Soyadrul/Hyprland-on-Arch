@@ -46,9 +46,8 @@ len=${#args[@]} # Get the number of arguments
 for ((i=0; i<len; i++)); do
     if [[ "${args[i]}" == "--notify" || "${args[i]}" == "-n" ]]; then
         NOTIFY=true
-    elif [[ "${args[i]}" == "--delay" || "${args[i]}" == "-d" ]]; then
-        ((i++))
-        DELAY="${args[i]}"
+    elif [[ "${args[i]}" == "--delay="* || "${args[i]}" == "-d="* ]]; then
+        DELAY="${args[i]#*=}" # Get the substring after the "=" sign
         is_positive_real ${DELAY}
         if [[ $? == 1 ]];then # Check the exit status of the previously executed command (in this case is_positive_real)
             echo "ERROR... The delay MUST be expressed with a real positive number (--delay 7, --delay 3.14, etc.)"
@@ -57,8 +56,8 @@ for ((i=0; i<len; i++)); do
     elif [[ "${args[i]}" == "--help" || "${args[i]}" == "-h" ]]; then
         echo -e "Usage: ${command_name} ${Light_Blue}[options]"
         echo -e "${Light_Blue}--help${Default_color}/${Light_Blue}-h ${Default_color}              show this message"
-        echo -e "${Light_Blue}--notify${Default_color}/${Light_Blue}-n ${Default_color}            make a sound notification when a click occurs (this adds an overhead so the delay between 2 clicks will take more time)"
-        echo -e "${Light_Blue}--delay${Default_color}/${Light_Blue}-d <seconds> ${Default_color}   specify the delay (a positive real number) between 2 clicks"
+        echo -e "${Light_Blue}--notify${Default_color}/${Light_Blue}-n ${Default_color}            make a sound notification when a click occurs (this adds an overhead so the delay between 2 clicks will take more time than specified)"
+        echo -e "${Light_Blue}--delay=${Default_color}/${Light_Blue}-d=<seconds> ${Default_color}  specify the delay (a positive real number) between 2 clicks"
         exit 0 # Terminate (success)
     else
         echo "ERROR... The option '${args[i]}' does not exist"
