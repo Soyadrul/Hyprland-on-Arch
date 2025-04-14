@@ -27,9 +27,6 @@ is_positive_real() {
 # Function to set-up the clicks
 clicks(){
     while true; do
-        #if (( $(date +%s) > ${end_time} )); then
-        #    break
-        #fi
         echo click left
         if [[ "${1}" == "true" ]]; then
             paplay "${SOUND}"
@@ -131,13 +128,14 @@ CLICK_PID=$!
 echo "Press '${STOP_KEY}' to stop the autoclicker."
 
 # Listening for the $STOP_KEY
-while true; do
-    read -n 1 key
+while (( $(date +%s) < ${end_time} )); do
+    read -n 1 -t 0.1 key
     #CLICK_PID=$(pgrep -P ${script_pid})
     if [[ "${key}" == "${STOP_KEY}" ]]; then
-        kill_process
         break
     fi
 done
+
+kill_process
 
 echo "Autoclicker stopped."
