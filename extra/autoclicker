@@ -46,7 +46,7 @@ kill_process(){
 
 DELAY=1.0 # Seconds between 2 consecutive clicks
 STOP_KEY="q" # Key to stop the autoclicker
-INITIAL_PAUSE=1 # Pause before starting the autoclicker
+INITIAL_PAUSE=3 # Pause before starting the autoclicker
 NOTIFY=false # If there should be a sound notification when a click occurs
 SOUND="/usr/share/sounds/freedesktop/stereo/complete.oga" # Notification sound heard when a click occurs (if enabled)
 TIMER=86400 # For how much time, in seconds, the autoclicker will run before auto-stopping itself (defaults to 1 day)
