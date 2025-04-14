@@ -29,7 +29,7 @@ clicks(){
     while true; do
         echo click left
         if [[ "${1}" == "true" ]]; then
-            paplay "${SOUND}"
+            paplay "${SOUND}" &
         fi
         sleep "${DELAY}"
     done
@@ -84,7 +84,7 @@ for ((i=0; i<len; i++)); do
     elif [[ "${args[i]}" == "--help" || "${args[i]}" == "-h" ]]; then
         echo -e "Usage: ${command_name} ${Light_Blue}[options]"
         echo -e "${Light_Blue}--help${Default_color}/${Light_Blue}-h ${Default_color}              show this message"
-        echo -e "${Light_Blue}--notify${Default_color}/${Light_Blue}-n ${Default_color}            make a sound notification when a click occurs (this adds an overhead so the delay between 2 clicks will take more time than specified)"
+        echo -e "${Light_Blue}--notify${Default_color}/${Light_Blue}-n ${Default_color}            make a sound notification when a click occurs"
         echo -e "${Light_Blue}--delay=${Default_color}/${Light_Blue}-d=<seconds> ${Default_color}  specify the delay (a positive real number) between 2 clicks"
         echo -e "${Light_Blue}--timer=${Default_color}/${Light_Blue}-t=<seconds> ${Default_color}  specify for how much time this program will run"
         exit 0 # Terminate (success)
