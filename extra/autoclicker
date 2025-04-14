@@ -24,12 +24,35 @@ is_positive_real() {
     fi
 }
 
+# Function to set-up the clicks
+clicks(){
+    while true; do
+        #if (( $(date +%s) > ${end_time} )); then
+        #    break
+        #fi
+        echo click left
+        if [[ "${1}" == "true" ]]; then
+            paplay "${SOUND}"
+        fi
+        sleep "${DELAY}"
+    done
+}
+
+# Kill the autoclicker
+kill_process(){
+    echo -e "\nInterruption in progress..."
+    kill "${CLICK_PID}"
+    wait "${CLICK_PID}" 2>/dev/null
+}
+
+
 
 DELAY=1.0 # Seconds between 2 consecutive clicks
 STOP_KEY="q" # Key to stop the autoclicker
-INITIAL_PAUSE=5 # Pause before starting the autoclicker
+INITIAL_PAUSE=1 # Pause before starting the autoclicker
 NOTIFY=false # If there should be a sound notification when a click occurs
 SOUND="/usr/share/sounds/freedesktop/stereo/complete.oga" # Notification sound heard when a click occurs (if enabled)
+TIMER=86400 # For how much time, in seconds, the autoclicker will run before auto-stopping itself (defaults to 1 day)
 
 # Colors
 Default_color="\033[0;00m"
@@ -39,6 +62,7 @@ Cyan="\033[0;36m"
 Light_Cyan="\033[0;96m"
 
 command_name="autoclicker"
+script_pid=${BASHPID}
 args=("${@}") # Store all arguments in an indexed array
 len=${#args[@]} # Get the number of arguments
 
@@ -46,11 +70,18 @@ len=${#args[@]} # Get the number of arguments
 for ((i=0; i<len; i++)); do
     if [[ "${args[i]}" == "--notify" || "${args[i]}" == "-n" ]]; then
         NOTIFY=true
-    elif [[ "${args[i]}" == "--delay="* || "${args[i]}" == "-d="* ]]; then
+    elif [[ "${args[i]}" == "--delay"* || "${args[i]}" == "-d"* ]]; then
         DELAY="${args[i]#*=}" # Get the substring after the "=" sign
         is_positive_real ${DELAY}
         if [[ $? == 1 ]];then # Check the exit status of the previously executed command (in this case is_positive_real)
-            echo "ERROR... The delay MUST be expressed with a real positive number (--delay 7, --delay 3.14, etc.)"
+            echo "ERROR... The delay MUST be expressed with a real positive number (--delay=7, --delay=3.14, etc.)"
+            exit 1 # Terminate (error)
+        fi
+    elif [[ "${args[i]}" == "--timer"* || "${args[i]}" == "-t"* ]]; then
+        TIMER="${args[i]#*=}" # Get the substring after the "=" sign
+        is_positive_real ${TIMER}
+        if [[ $? == 1 ]];then # Check the exit status of the previously executed command (in this case is_positive_real)
+            echo "ERROR... The timer MUST be expressed with a real positive number (--timer=7, --timer=3.14, etc.)"
             exit 1 # Terminate (error)
         fi
     elif [[ "${args[i]}" == "--help" || "${args[i]}" == "-h" ]]; then
@@ -58,6 +89,7 @@ for ((i=0; i<len; i++)); do
         echo -e "${Light_Blue}--help${Default_color}/${Light_Blue}-h ${Default_color}              show this message"
         echo -e "${Light_Blue}--notify${Default_color}/${Light_Blue}-n ${Default_color}            make a sound notification when a click occurs (this adds an overhead so the delay between 2 clicks will take more time than specified)"
         echo -e "${Light_Blue}--delay=${Default_color}/${Light_Blue}-d=<seconds> ${Default_color}  specify the delay (a positive real number) between 2 clicks"
+        echo -e "${Light_Blue}--timer=${Default_color}/${Light_Blue}-t=<seconds> ${Default_color}  specify for how much time this program will run"
         exit 0 # Terminate (success)
     else
         echo "ERROR... The option '${args[i]}' does not exist"
@@ -65,8 +97,8 @@ for ((i=0; i<len; i++)); do
     fi
 done
 
-read -p "The autoclicker will start in ${INITIAL_PAUSE} seconds with a delay of ${DELAY} seconds between clicks [y|N] " continue
-continue=$(echo "${continue}" | tr '[:lower:]' '[:upper:]')
+read -p "The autoclicker will START in ${INITIAL_PAUSE} second/s with a DELAY of ${DELAY} second/s between clicks and will RUN for ${TIMER} second/s with SOUND NOTIFICATIONS turned $(if ${NOTIFY} == true; then echo "on"; else echo "off"; fi) [y|N] " continue # Prompt if the user wants to continue or not
+continue=$(echo "${continue}" | tr '[:lower:]' '[:upper:]') # Capitalize the $continue variable
 if [[ ${continue} != "Y" ]]; then
     exit 0 # Terminate (success)
 fi
@@ -86,16 +118,10 @@ done
 
 echo -e "0\n"
 
-clicks(){
-    while true; do
-        echo click left
-        if [[ "${1}" == "true" ]]; then
-            paplay "${SOUND}"
-        fi
-        sleep "${DELAY}"
-    done
-}
+# Calculate the moment in which this program should terminate
+end_time=$(date -d "+${TIMER} seconds" +%s)
 
+# Start the clicks
 clicks ${NOTIFY} | dotool &
 
 # Save the PID of the process so you can terminate it
@@ -104,12 +130,12 @@ CLICK_PID=$!
 # Loop to listen if the STOP_KEY is pressed
 echo "Press '${STOP_KEY}' to stop the autoclicker."
 
+# Listening for the $STOP_KEY
 while true; do
     read -n 1 key
+    #CLICK_PID=$(pgrep -P ${script_pid})
     if [[ "${key}" == "${STOP_KEY}" ]]; then
-        echo -e "\nInterruption in progress..."
-        kill "${CLICK_PID}"
-        wait "${CLICK_PID}" 2>/dev/null
+        kill_process
         break
     fi
 done
