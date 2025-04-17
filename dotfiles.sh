@@ -33,7 +33,7 @@ ln -s "${Current_location}"/wofi/style.css "${target_folder}"style.css
 # Hyprland - window manager
 target_folder="$HOME/.config/hypr/"
 mkdir -p "${target_folder}"
-ln -s "${Current_location}"/hypr/hyprland.conf "${target_folder}"hyprland.conf
+ln -s "${Current_location}"/hypr/* "${target_folder}"
 
 # Wallpapers
 target_folder="$HOME/.config/wallpapers/"
@@ -46,14 +46,14 @@ rm $HOME/.bashrc
 ln -s "${Current_location}"/bash/.bashrc "${target_folder}".bashrc
 
 # Hyprlock - lock screen
-target_folder="$HOME/.config/hypr/"
-mkdir -p "${target_folder}"
-ln -s "${Current_location}"/hypr/hyprlock.conf "${target_folder}"hyprlock.conf
+#target_folder="$HOME/.config/hypr/"
+#mkdir -p "${target_folder}"
+#ln -s "${Current_location}"/hypr/hyprlock.conf "${target_folder}"hyprlock.conf
 
 # Hypridle - idle manager
-target_folder="$HOME/.config/hypr/"
-mkdir -p "${target_folder}"
-ln -s "${Current_location}"/hypr/hypridle.conf "${target_folder}"hypridle.conf
+##target_folder="$HOME/.config/hypr/"
+#mkdir -p "${target_folder}"
+#ln -s "${Current_location}"/hypr/hypridle.conf "${target_folder}"hypridle.conf
 
 # Swappy - Snapshot editing tool
 target_folder="$HOME/.config/swappy/"
@@ -88,11 +88,11 @@ sudo mv "${target_folder}"theme.conf "${target_folder}"theme.conf.old
 sudo cp "${Current_location}"/sddm/sugar-candy/theme.conf "${target_folder}"theme.conf
 
 # Hyprland scripts
-target_folder="$HOME/.config/hypr/scripts/blue-light/"
-mkdir -p "${target_folder}"
-ln -s "${Current_location}"/hypr/scripts/blue-light/* "${target_folder}"
+#target_folder="$HOME/.config/hypr/scripts/blue-light/"
+#mkdir -p "${target_folder}"
+#ln -s "${Current_location}"/hypr/scripts/blue-light/* "${target_folder}"
 
 # Hyprpaper
-target_folder="$HOME/.config/hypr/"
-mkdir -p "${target_folder}"
-ln -s "${Current_location}"/hypr/hyprpaper.conf "${target_folder}"hyprpaper.conf
+#target_folder="$HOME/.config/hypr/"
+#mkdir -p "${target_folder}"
+#ln -s "${Current_location}"/hypr/hyprpaper.conf "${target_folder}"hyprpaper.conf
