@@ -12,7 +12,7 @@
 }
 {
     "label" : "logout",
-    "action" : "echo 'key super+m' | dotool",
+    "action" : "hyprctl dispatch exit",
     "text" : "Logout",
     "keybind" : "e"
 }
