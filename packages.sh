@@ -109,6 +109,9 @@ pacman+="cups cups-pdf bluez-cups cups-browsed system-config-printer hplip "
 # Package used to display the keys pressed on Wayland
 pacman+="wev "
 
+#
+aur+="bibata-cursor-theme "
+
 
 # Downloading the packages
 sudo pacman -S ${pacman}
