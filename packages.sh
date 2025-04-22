@@ -64,8 +64,8 @@ aur+="nautilus-open-any-terminal "
 aur+="megasync-bin nautilus-megasync "
 
 # Authentication agent
-pacman+="polkit-gnome "
-#polkit-kde-agent
+pacman+="hyprpolkitagent "
+#polkit-kde-agent polkit-gnome
 
 # Login manager
 pacman+="sddm "
