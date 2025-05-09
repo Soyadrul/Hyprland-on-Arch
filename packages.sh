@@ -91,7 +91,8 @@ pacman+="grim slurp swappy "
 #sudo pacman -S gammastep
 
 # Tool to choose CPU power mode (powersave/performance)
-pacman+="tlp "
+pacman+="power-profiles-daemon "
+#sudo pacman -S tlp
 #aur -S auto-cpufreq
 
 # To make and use virtual machines

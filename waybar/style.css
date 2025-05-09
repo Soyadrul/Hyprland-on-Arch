@@ -112,6 +112,7 @@ button:hover {
 #mode,
 #idle_inhibitor,
 #scratchpad,
+#power-profiles-daemon,
 #mpd {
     padding: 0 1.2em;
     color: #ffffff;
@@ -163,6 +164,26 @@ button:hover {
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+}
+
+#power-profiles-daemon {
+    background-color: #030D22;
+    color: #23FDFD;
+}
+
+#power-profiles-daemon.power-saver {
+    background-color: #030D22;
+    color: #23FD22;
+}
+
+#power-profiles-daemon.balanced {
+    background-color: #030D22;
+    color: #EEEEEE;
+}
+
+#power-profiles-daemon.performance {
+    background-color: #030D22;
+    color: #fa0000;
 }
 
 label:focus {
