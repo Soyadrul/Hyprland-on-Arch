@@ -51,7 +51,7 @@
     "custom/wlogout": {
         "format": "{icon}",
         "format-icons": "",
-        "on-click": "wlogout",
+        "on-click": "wlogout --layout $HOME/.config/wlogout/layout --css $HOME/.config/wlogout/style.css",
         "tooltip": false
     },
     "keyboard-state": {
