@@ -103,6 +103,9 @@ aur+="quickemu "
 pacman+="gnome-calculator gnome-clocks gnome-text-editor gnome-weather gnome-disk-utility evince eog cheese gthumb "
 #gnome-system-monitor gnome-tweaks
 
+# Markdown editor
+pacman+="apostrophe "
+
 # Printer support
 pacman+="cups cups-pdf bluez-cups cups-browsed system-config-printer hplip "
 #cups-pk-helper
@@ -110,7 +113,7 @@ pacman+="cups cups-pdf bluez-cups cups-browsed system-config-printer hplip "
 # Package used to display the keys pressed on Wayland
 pacman+="wev "
 
-#
+# Cursor theme
 aur+="bibata-cursor-theme "
 
 
