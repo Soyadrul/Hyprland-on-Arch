@@ -33,7 +33,7 @@ pacman+="hyprland hyprpaper xdg-desktop-portal-hyprland hyprlock hypridle hyprcu
 #aur+="hyprshade "
 
 # Fonts
-pacman+="otf-font-awesome ttf-roboto ttf-roboto-mono ttf-roboto-mono-nerd noto-fonts-cjk "
+pacman+="otf-font-awesome ttf-roboto ttf-roboto-mono ttf-roboto-mono-nerd ttf-jetbrains-mono-nerd noto-fonts-cjk "
 
 # Bluetooth
 pacman+="bluez bluez-utils blueman "
