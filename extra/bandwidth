@@ -1,0 +1,35 @@
+#!/usr/bin/bash
+
+# Function to get total bytes (received + transmitted) for all interfaces except lo (loopback)
+get_bytes() {
+    awk 'NR>2 {if ($1 !~ /lo:/) rx+=$2; tx+=$10} END {print rx, tx}' /proc/net/dev
+}
+
+# Capture initial bytes
+read rx_start tx_start < <(get_bytes)
+
+# --- Place the command or script you want to measure here ---
+echo "Running monitored command..."
+read key  # Replace this with your actual command/script
+# ------------------------------------------------------------
+
+# Capture final bytes
+read rx_end tx_end < <(get_bytes)
+
+# Calculate differences
+rx_used=$((rx_end - rx_start))
+tx_used=$((tx_end - tx_start))
+total_used=$((rx_used + tx_used))
+
+# Convert bytes to human-readable format (MB)
+rx_used_mb=$(echo "scale=2; $rx_used/1024/1024" | bc)
+tx_used_mb=$(echo "scale=2; $tx_used/1024/1024" | bc)
+total_used_mb=$(echo "scale=2; $total_used/1024/1024" | bc)
+
+# Show results
+echo "-----------------------------"
+echo "Internet usage during script:"
+echo "Downloaded:   $rx_used_mb MB"
+echo "Uploaded:     $tx_used_mb MB"
+echo "Total:        $total_used_mb MB"
+echo "-----------------------------"
