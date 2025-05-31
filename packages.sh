@@ -100,7 +100,7 @@ pacman+="qemu-full "
 aur+="quickemu "
 
 # Gnome packages
-pacman+="gnome-calculator gnome-clocks gnome-text-editor gnome-weather gnome-disk-utility evince eog cheese gthumb "
+pacman+="gnome-calculator gnome-clocks gnome-text-editor gnome-weather gnome-disk-utility evince eog cheese simple-scan snapshot "
 #gnome-system-monitor gnome-tweaks
 
 # Markdown editor
