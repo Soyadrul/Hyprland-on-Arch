@@ -1,3 +1,4 @@
+
 [Unit]
 Description=Battery Charge Control Service
 After=multi-user.target
@@ -18,9 +19,9 @@ Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # Security settings
 NoNewPrivileges=true
-ProtectSystem=strict
+ProtectSystem=false
 ProtectHome=true
-ReadWritePaths=/var/log /sys/class/power_supply /proc/acpi
+ReadWritePaths=/var/log /sys/class/power_supply /proc/acpi /run/tlp /tmp
 
 [Install]
 WantedBy=multi-user.target
