@@ -32,6 +32,9 @@ Light_Yellow="\[\e[93m\]"
 #PS1='[\u@\h \W]\$ '
 PS1="${Light_Red}┌──${Light_Blue}󰣇${Light_Green} (\u@\h) [\w]\n${Light_Red}└─${Light_Yellow}\$${Default_color} "
 
+if [[ -n "${SSH_TTY}" ]]; then
+    PS1="${Red}┌──${Light_Blue}󰣇 ${Light_Green}[\u --> \w]${Default_color} (${Light_Cyan}SSH${Default_color})\n${Red}└─${Light_Yellow}#${Default_color} "
+fi;
 
 export HISTCONTROL=ignoredups
 export HISTFILESIZE=100000
