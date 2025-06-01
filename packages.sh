@@ -1,7 +1,7 @@
 #! /usr/bin/bash
 
 # Utilities
-pacman="git nano neofetch telegram-desktop firefox vlc ffmpeg htop gtk2 gtk3 gtk4 mpv mpv-mpris powertop qt5-wayland qt6-wayland wireplumber pipewire gnome-themes-extra nwg-look nwg-displays zram-generator man-pages-it flatpak libva-utils vdpauinfo lib32-libva-vdpau-driver libvdpau-va-gl resources thunderbird libreoffice-still python-pip fzf bc arp-scan "
+pacman="git nano neofetch firefox vlc ffmpeg htop gtk2 gtk3 gtk4 mpv mpv-mpris powertop qt5-wayland qt6-wayland gnome-themes-extra nwg-look nwg-displays zram-generator man-pages-it libva-utils vdpauinfo lib32-libva-vdpau-driver libvdpau-va-gl resources thunderbird libreoffice-still python-pip fzf bc arp-scan imagemagick "
 #libva-vdpau-driver
 #mpd
 aur="localsend-bin parabolic-gtk downgrade dotool zen-browser-bin "
@@ -48,7 +48,7 @@ pacman+="dunst libnotify "
 pacman+="cliphist wl-clipboard wl-clip-persist "
 
 # Audio
-pacman+="pamixer "
+pacman+="wireplumber pipewire pamixer "
 
 # Brightness
 pacman+="brightnessctl "
@@ -61,7 +61,7 @@ pacman+="nautilus sushi nautilus-image-converter "
 aur+="nautilus-open-any-terminal "
 
 # Cloud app - Mega
-aur+="megasync-bin nautilus-megasync "
+#aur+="megasync-bin nautilus-megasync "
 
 # Authentication agent
 pacman+="hyprpolkitagent "
