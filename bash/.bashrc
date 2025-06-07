@@ -10,6 +10,7 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias gnome='XDG_SESSION_TYPE=wayland dbus-run-session gnome-session'
 alias scan='sudo arp-scan --localnet'
+[[ "$TERM" == "xterm-kitty" ]] && alias ssh="TERM=xterm-256color ssh"
 
 
 # PS1 colors
