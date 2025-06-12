@@ -8,5 +8,5 @@ sudo systemctl enable cups.service
 #systemctl enable bluez
 
 # Tlp
-#sudo systemctl enable tlp.service
-#sudo systemctl mask systemd-rfkill.service systemd-rfkill.socket
+sudo systemctl enable tlp.service
+sudo systemctl mask systemd-rfkill.service systemd-rfkill.socket
