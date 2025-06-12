@@ -1,10 +1,10 @@
 #! /usr/bin/bash
 
 # Utilities
-pacman="git nano neofetch firefox vlc ffmpeg htop gtk2 gtk3 gtk4 mpv mpv-mpris powertop qt5-wayland qt6-wayland gnome-themes-extra nwg-look nwg-displays zram-generator man-pages-it libva-utils vdpauinfo lib32-libva-vdpau-driver libvdpau-va-gl resources thunderbird libreoffice-still python-pip fzf bc arp-scan imagemagick "
+pacman="git nano firefox vlc ffmpeg htop gtk2 gtk3 gtk4 mpv mpv-mpris powertop qt5-wayland qt6-wayland gnome-themes-extra nwg-look nwg-displays zram-generator man-pages-it libva-utils vdpauinfo lib32-libva-vdpau-driver libvdpau-va-gl resources thunderbird libreoffice-still python-pip fzf bc arp-scan imagemagick "
 #libva-vdpau-driver
 #mpd
-aur="localsend-bin parabolic-gtk downgrade dotool zen-browser-bin "
+aur="localsend-bin parabolic-gtk downgrade dotool zen-browser-bin neofetch "
 #archlinux-tweak-tool-git python-spotdl
 
 # Fun
