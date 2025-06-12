@@ -91,8 +91,8 @@ pacman+="grim slurp swappy "
 #sudo pacman -S gammastep
 
 # Tool to choose CPU power mode (powersave/performance)
-pacman+="tlp "
-#sudo pacman -S power-profiles-daemon
+aur+="auto-cpufreq "
+#sudo pacman -S power-profiles-daemon tlp
 #aur -S auto-cpufreq
 
 # To make and use virtual machines
@@ -126,3 +126,6 @@ gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal kitty
 gsettings set com.github.stunkymonkey.nautilus-open-any-terminal keybindings '<Ctrl><Alt>t'
 gsettings set com.github.stunkymonkey.nautilus-open-any-terminal new-tab true
 gsettings set com.github.stunkymonkey.nautilus-open-any-terminal flatpak system
+
+# Install the 'auto-cpufreq' daemon
+sudo auto-cpufreq --install
