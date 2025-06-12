@@ -1,11 +1,11 @@
 #! /usr/bin/bash
 
 # Utilities
-pacman="git nano firefox vlc ffmpeg htop gtk2 gtk3 gtk4 mpv mpv-mpris powertop qt5-wayland qt6-wayland gnome-themes-extra nwg-look nwg-displays zram-generator man-pages-it libva-utils vdpauinfo lib32-libva-vdpau-driver libvdpau-va-gl resources thunderbird libreoffice-still python-pip fzf bc arp-scan imagemagick "
+pacman="git nano firefox vlc ffmpeg htop gtk2 gtk3 gtk4 mpv mpv-mpris powertop qt5-wayland qt6-wayland gnome-themes-extra nwg-look nwg-displays zram-generator man-pages-it libva-utils vdpauinfo libvdpau-va-gl resources thunderbird libreoffice-still python-pip fzf bc arp-scan imagemagick "
 #libva-vdpau-driver
 #mpd
-aur="localsend-bin parabolic-gtk downgrade dotool zen-browser-bin neofetch "
-#archlinux-tweak-tool-git python-spotdl
+aur="localsend-bin downgrade dotool zen-browser-bin neofetch "
+#archlinux-tweak-tool-git python-spotdl parabolic
 
 # Fun
 pacman+="cmatrix sl cowsay figlet "
@@ -16,10 +16,10 @@ AMD_vendor_id="AuthenticAMD"
 Intel_vendor_id="GenuineIntel"
 # AMD
 if [[ "${vendor_id}" == "${AMD_vendor_id}" ]]; then
-	pacman+="radeontop mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon "
+	pacman+="radeontop mesa vulkan-radeon "
 # Intel
 elif [[ "${vendor_id}" == "${Intel_vendor_id}" ]]; then
-	pacman+="intel-gpu-tools intel-media-driver libva-intel-driver lib32-libva-intel-driver mesa lib32-mesa vulkan-intel lib32-vulkan-intel linux-firmware "
+	pacman+="intel-gpu-tools intel-media-driver libva-intel-driver lib32-libva-intel-driver mesa vulkan-intel lib32-vulkan-intel linux-firmware "
 # Unknown CPU
 else
 	echo "Unknown CPU vendor"
@@ -97,7 +97,7 @@ pacman+="tlp "
 
 # To make and use virtual machines
 pacman+="qemu-full "
-aur+="quickemu "
+aur+="quickemu-git "
 
 # Gnome packages
 pacman+="gnome-calculator gnome-clocks gnome-text-editor gnome-weather gnome-disk-utility evince eog cheese simple-scan snapshot "
