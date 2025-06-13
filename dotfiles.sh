@@ -42,6 +42,10 @@ target_folder="$HOME/"
 rm $HOME/.bashrc
 ln -s "${Current_location}"/bash/.bashrc "${target_folder}".bashrc
 
+# Root .bashrc
+target_folder="/root/"
+sudo ln -s "${Current_location}"/bash/.root_bashrc "${target_folder}".bashrc
+
 # Swappy - Snapshot editing tool
 target_folder="$HOME/.config/swappy/"
 mkdir -p "${target_folder}"
