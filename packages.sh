@@ -16,10 +16,10 @@ AMD_vendor_id="AuthenticAMD"
 Intel_vendor_id="GenuineIntel"
 # AMD
 if [[ "${vendor_id}" == "${AMD_vendor_id}" ]]; then
-	pacman+="radeontop mesa vulkan-radeon "
+	pacman+="radeontop mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon "
 # Intel
 elif [[ "${vendor_id}" == "${Intel_vendor_id}" ]]; then
-	pacman+="intel-gpu-tools intel-media-driver libva-intel-driver lib32-libva-intel-driver mesa vulkan-intel lib32-vulkan-intel linux-firmware "
+	pacman+="intel-gpu-tools intel-media-driver libva-intel-driver lib32-libva-intel-driver mesa lib32-mesa vulkan-intel lib32-vulkan-intel linux-firmware "
 # Unknown CPU
 else
 	echo "Unknown CPU vendor"
@@ -118,7 +118,7 @@ aur+="bibata-cursor-theme "
 
 
 # Downloading the packages
-sudo pacman -S ${pacman}
+sudo pacman -S ${pacman} --noconfirm
 paru -S ${aur}
 
 # Add "Open with kitty" button on nautilus file manager

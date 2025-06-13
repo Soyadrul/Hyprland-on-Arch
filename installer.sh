@@ -8,7 +8,7 @@ HandleLidSwitchExternalPower=ignore
 HandleLidSwitchDocked=ignore" | sudo tee -a /etc/systemd/logind.conf
 
 # System upgrade
-sudo pacman -Syu
+sudo pacman -Syu --noconfirm
 
 # Install Paru (AUR helper)
 bash aur.sh
