@@ -37,7 +37,6 @@ To install the dotfiles execute the next commands in your terminal:
 - logout menu: [wlogout](https://github.com/ArtsyMacaw/wlogout)
 - app launcher: [wofi](https://hg.sr.ht/~scoopta/wofi)
 - make and edit screenshots: [grim](https://gitlab.freedesktop.org/emersion/grim), [slurp](https://github.com/emersion/slurp), [swappy](https://github.com/jtheoof/swappy)
-`- CPU power mode: [auto-cpufreq](https://github.com/AdnanHodzic/auto-cpufreq)`
 - virtual machines: [quickemu](https://github.com/quickemu-project/quickemu)
 
 ## Themes
