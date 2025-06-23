@@ -114,12 +114,12 @@ pacman+="cups cups-pdf bluez-cups cups-browsed system-config-printer hplip "
 pacman+="wev "
 
 # Cursor theme
-aur+="bibata-cursor-theme "
+aur+="bibata-cursor-theme-bin "
 
 
 # Downloading the packages
 sudo pacman -S ${pacman} --noconfirm
-paru -S ${aur}
+paru -S ${aur} --noconfirm
 
 # Add "Open with kitty" button on nautilus file manager
 gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal kitty

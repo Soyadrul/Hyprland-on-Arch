@@ -19,4 +19,4 @@ cd "${Paru_folder}"
 makepkg -s
 
 Paru_file_name=$(ls | grep x86_64.pkg.tar.zst | grep -v debug)
-sudo pacman -U "${Paru_file_name}"
+sudo pacman -U "${Paru_file_name}" --noconfirm
