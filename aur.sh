@@ -8,7 +8,7 @@ install_aur_helper() {
 	# Check if another AUR helper is installed
 	for helper in "${OPTIONS[@]}"; do
 		if command -v "${helper}" >/dev/null 2>&1; then
-			echo "Already installed: ${helper}"
+			echo "${helper}"
 			exit 0 # Exits the bash script with success code if an AUR helper is already installed
 		fi
 	done
