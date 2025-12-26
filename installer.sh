@@ -15,13 +15,12 @@ HandleLidSwitchDocked=ignore" | sudo tee -a /etc/systemd/logind.conf
 # System upgrade
 sudo pacman -Syu --noconfirm
 
-# Install Paru (AUR helper)
+# Install an AUR helper
 #AUR_helpers=("yay" "paru" "pikaur" "pakku" "pacaur")
 AUR_helpers=("yay" "paru")
 AUR_helper_installed=$(install_aur_helper "${AUR_helpers[@]}")
 
 # Install the packages
-#bash packages.sh
 install_packages "${AUR_helper_installed}"
 # Add current user to input group, so the dotool utility becomes usable
 sudo usermod -a -G input $USER
