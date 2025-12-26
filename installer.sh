@@ -1,5 +1,8 @@
 #! /usr/bin/bash
 
+source aur.sh
+source packages.sh
+
 Current_location=$(pwd)
 
 # To ignore the lid-switch operation (it will be managed by Hyprland on hyprland.conf file)
@@ -13,10 +16,13 @@ HandleLidSwitchDocked=ignore" | sudo tee -a /etc/systemd/logind.conf
 sudo pacman -Syu --noconfirm
 
 # Install Paru (AUR helper)
-bash aur.sh
+#AUR_helpers=("yay" "paru" "pikaur" "pakku" "pacaur")
+AUR_helpers=("yay" "paru")
+AUR_helper_installed=$(install_aur_helper "${AUR_helpers[@]}")
 
 # Install the packages
-bash packages.sh
+#bash packages.sh
+install_packages "${AUR_helper_installed}"
 # Add current user to input group, so the dotool utility becomes usable
 sudo usermod -a -G input $USER
 
