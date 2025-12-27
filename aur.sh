@@ -34,14 +34,12 @@ install_aur_helper() {
     #echo "" >&2
     
     #gum style "  -> Downloading ${AUR_helper}" >&2
-    #local download_process=$(curl "${Download_link}" --output "${Zip_folder_name}")
-    #wait ${download_process}
     gum spin --spinner minidot --show-output --title "Downloading ${AUR_helper}" -- curl --silent --show-error "${Download_link}" --output "${Zip_folder_name}"
-    gum style --foreground 46 "  ✓ Downloaded ${AUR_helper}" >&2
+    gum style --foreground 46 "  ✓ Downloaded" >&2
     
     #gum style "  -> Extracting archive..." >&2
     gum spin --spinner minidot --show-output --title "Extracting archive..." -- tar -xvzf "${Zip_folder_name}" &>/dev/null
-    gum style --foreground 46 "  ✓ Extracted archive" >&2
+    gum style --foreground 46 "  ✓ Extracted" >&2
     
     cd "${Folder}"
     
