@@ -13,7 +13,7 @@ HandleLidSwitchExternalPower=ignore
 HandleLidSwitchDocked=ignore" | sudo tee -a /etc/systemd/logind.conf
 
 # System upgrade
-sudo pacman -Syu --noconfirm
+sudo pacman -Syu --noconfirm gum
 
 # Install an AUR helper
 #AUR_helpers=("yay" "paru" "pikaur" "pakku" "pacaur")
