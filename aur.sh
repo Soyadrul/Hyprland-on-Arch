@@ -33,6 +33,10 @@ install_aur_helper() {
     gum style --bold --foreground 212 "Installing AUR helper: ${AUR_helper}" >&2
     #echo "" >&2
     
+    # Installing prerequisites
+    gum spin --spinner minidot --show-output --title "Prerequisites" -- sudo pacman -S --needed --noconfirm base-devel
+    gum style --foreground 46 "  ✓ Prerequisites installed" >&2
+    
     #gum style "  -> Downloading ${AUR_helper}" >&2
     gum spin --spinner minidot --show-output --title "Downloading ${AUR_helper}" -- curl --silent --show-error "${Download_link}" --output "${Zip_folder_name}"
     gum style --foreground 46 "  ✓ Downloaded" >&2
