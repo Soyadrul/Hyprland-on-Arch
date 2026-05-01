@@ -4,11 +4,11 @@ install_packages() {
     aur_helper=$1
     
     # Utilities
-    local pacman="git nano firefox vlc ffmpeg htop gtk2 gtk3 gtk4 mpv mpv-mpris powertop qt5-wayland qt6-wayland gnome-themes-extra nwg-look nwg-displays zram-generator man-pages-it libva-utils vdpauinfo libvdpau-va-gl resources thunderbird libreoffice-still python-pip fzf bc arp-scan imagemagick "
+    local pacman="git nano firefox vlc ffmpeg htop gtk3 gtk4 mpv mpv-mpris powertop qt5-wayland qt6-wayland gnome-themes-extra nwg-look nwg-displays zram-generator man-pages-it libva-utils vdpauinfo libvdpau-va-gl resources thunderbird libreoffice-still python-pip fzf bc arp-scan imagemagick tree "
     #libva-vdpau-driver
     #mpd
-    local aur="localsend-bin downgrade dotool zen-browser-bin neofetch "
-    #archlinux-tweak-tool-git python-spotdl parabolic
+    local aur="localsend-bin downgrade dotool zen-browser-bin neofetch parabolic "
+    #archlinux-tweak-tool-git python-spotdl
 
     # Fun
     pacman+="cmatrix sl cowsay figlet "
@@ -28,11 +28,13 @@ install_packages() {
         echo "Unknown CPU vendor"
         #libva-nvidia-driver nvidia-utils libvdpau lib32-libvdpau
         #libva lib32-libva libva-utils libvarlink
+        
+        #nvidia-open
     fi
 
 
     # Hyprland & co
-    pacman+="hyprland hyprpaper xdg-desktop-portal-hyprland xdg-desktop-portal-gtk hyprlock hypridle hyprcursor nwg-dock-hyprland hyprpicker hyprland-qtutils hyprsunset "
+    pacman+="hyprland hyprpaper xdg-desktop-portal-hyprland xdg-desktop-portal-gtk hyprlock hypridle hyprcursor nwg-dock-hyprland hyprpicker hyprsunset "
     #aur+="hyprshade "
 
     # Fonts
@@ -51,7 +53,7 @@ install_packages() {
     pacman+="cliphist wl-clipboard wl-clip-persist "
 
     # Audio
-    pacman+="wireplumber pipewire pamixer "
+    pacman+="wireplumber pipewire pipewire-pulse pamixer "
 
     # Brightness
     pacman+="brightnessctl "
@@ -103,7 +105,7 @@ install_packages() {
     aur+="quickemu-git "
 
     # Gnome packages
-    pacman+="gnome-calculator gnome-clocks gnome-text-editor gnome-weather gnome-disk-utility evince eog cheese simple-scan snapshot "
+    pacman+="gnome-calculator gnome-clocks gnome-text-editor gnome-weather gnome-disk-utility evince eog simple-scan snapshot "
     #gnome-system-monitor gnome-tweaks
 
     # Markdown editor
@@ -121,8 +123,8 @@ install_packages() {
 
 
     # Downloading the packages
-    sudo pacman -S ${pacman} --noconfirm
-    ${aur_helper} -S ${aur} --noconfirm
+    sudo pacman -S --needed --noconfirm ${pacman}
+    ${aur_helper} -S --needed --noconfirm ${aur}
 
     # Add "Open with kitty" button on nautilus file manager
     gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal kitty
