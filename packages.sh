@@ -4,10 +4,10 @@ install_packages() {
     aur_helper=$1
     
     # Utilities
-    local pacman="git nano firefox vlc ffmpeg htop gtk3 gtk4 mpv mpv-mpris powertop qt5-wayland qt6-wayland gnome-themes-extra nwg-look nwg-displays zram-generator man-pages-it libva-utils vdpauinfo libvdpau-va-gl resources thunderbird libreoffice-still python-pip fzf bc arp-scan imagemagick tree trash-cli "
+    local pacman="git nano firefox vlc ffmpeg htop gtk3 gtk4 mpv mpv-mpris powertop qt5-wayland qt6-wayland gnome-themes-extra nwg-look nwg-displays zram-generator man-pages-it libva-utils vdpauinfo libvdpau-va-gl resources thunderbird libreoffice-still python-pip fzf bc arp-scan imagemagick tree trash-cli torbrowser-launcher "
     #libva-vdpau-driver
     #mpd
-    local aur="localsend-bin downgrade dotool zen-browser-bin neofetch parabolic "
+    local aur="localsend-bin downgrade dotool zen-browser-bin neofetch parabolic ventoy-bin lmstudio-bin "
     #archlinux-tweak-tool-git python-spotdl
 
     # Fun
