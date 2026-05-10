@@ -26,10 +26,11 @@ install_packages() {
     # Unknown CPU
     else
         echo "Unknown CPU vendor"
-        #libva-nvidia-driver nvidia-utils libvdpau lib32-libvdpau
-        #libva lib32-libva libva-utils libvarlink
-        
-        #nvidia-open
+    fi
+    
+    # Install Nvidia packages if a Nvidia card is detected
+    if lspci | grep -qi "nvidia"; then
+        pacman+="nvidia-open libva-nvidia-driver nvidia-utils lib32-nvidia-utils libvdpau lib32-libvdpau libva lib32-libva libva-utils libvarlink "
     fi
 
 
