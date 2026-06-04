@@ -10,7 +10,7 @@
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces", "tray", "network", "bluetooth"],
     "modules-center": ["clock"],
-    "modules-right": ["idle_inhibitor", "pulseaudio", "cpu", "memory", "backlight", "battery", "custom/wlogout"],
+    "modules-right": ["idle_inhibitor", "power-profiles-daemon", "pulseaudio", "cpu", "memory", "backlight", "battery", "custom/wlogout"],
     
     
     // Modules configuration
@@ -102,8 +102,8 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
+            "activated": " ",
+            "deactivated": " "
         },
         "tooltip": true
     },
