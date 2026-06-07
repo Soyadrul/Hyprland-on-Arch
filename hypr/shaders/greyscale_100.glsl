@@ -1,18 +1,14 @@
-// Grayscale shader for use with Hyprland's screen_shader option
+// Grayscale shader (100%) for use with Hyprland's screen_shader option
 
+#version 300 es
 precision mediump float;
-varying vec2 v_texcoord;
-uniform sampler2D tex; // Input: Screen texture sampler (automatically provided by Hyprland)
-const vec3 LUMINANCE_WEIGHTS = vec3(0.2126, 0.7152, 0.0722); // Standard weights for perceived brightness
-const vec3 RED = vec3(1.0, 0.0, 0.0);
+
+in vec2 v_texcoord;
+uniform sampler2D tex;
+out vec4 fragColor;
 
 void main() {
-  vec4 normal = texture2D( tex, v_texcoord ); 
-  float greyscale = dot(normal.rgb, LUMINANCE_WEIGHTS); //float greyscale = (normal.r + normal.g + normal.b) / 3.0
-  
-  vec3 desat;
-  
-  desat = vec3(greyscale); // 100% saturazione
-  
-  gl_FragColor = vec4(desat, normal.a);
+    vec4 pixelColor = texture(tex, v_texcoord);
+    float grey = dot(pixelColor.rgb, vec3(0.2126, 0.7152, 0.0722));
+    fragColor = vec4(grey, grey, grey, pixelColor.a);
 }
