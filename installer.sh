@@ -19,6 +19,10 @@ sudo pacman -Syu --needed --noconfirm gum
 #AUR_helpers=("yay" "paru" "pikaur" "pakku" "pacaur")
 AUR_helpers=("yay" "paru")
 AUR_helper_installed=$(install_aur_helper "${AUR_helpers[@]}")
+if [ $? -ne 0 ] || [ -z "${AUR_helper_installed}" ]; then
+    echo "ERROR: Failed to install AUR helper. Aborting."
+    exit 1
+fi
 
 # Install the packages
 install_packages "${AUR_helper_installed}"
