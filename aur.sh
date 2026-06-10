@@ -79,6 +79,9 @@ install_aur_helper() {
     fi
     gum style --foreground 46 "  ✓ Installed" >&2
     
+    # Refresh bash command cache so newly installed binary is recognized
+    hash -r
+    
     # Verify the AUR helper is actually available
     if ! command -v "${AUR_helper}" >/dev/null 2>&1; then
         echo "WARNING: ${AUR_helper} reported as installed but binary not found. It may need to be added to PATH." >&2
