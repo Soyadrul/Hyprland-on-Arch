@@ -97,8 +97,9 @@ install_packages() {
     #sudo pacman -S gammastep
 
     # Tool to choose CPU power mode (powersave/performance)
+    pacman+="power-profiles-daemon "
     #aur+="auto-cpufreq "
-    #sudo pacman -S power-profiles-daemon tlp
+    #sudo pacman -S tlp
     #aur -S auto-cpufreq
 
     # To make and use virtual machines
