@@ -34,7 +34,7 @@ install_aur_helper() {
     #echo "" >&2
     
     # Installing prerequisites
-    gum spin --spinner minidot --show-output --title "Prerequisites" -- sudo pacman -S --needed --noconfirm base-devel
+    gum spin --spinner minidot --show-output --title "Prerequisites" -- sudo pacman -S --needed --noconfirm base-devel >&2
     if [ $? -ne 0 ]; then
         echo "Failed to install base-devel. Aborting." >&2
         return 1
@@ -42,7 +42,7 @@ install_aur_helper() {
     gum style --foreground 46 "  ✓ Prerequisites installed" >&2
     
     #gum style "  -> Downloading ${AUR_helper}" >&2
-    gum spin --spinner minidot --show-output --title "Downloading ${AUR_helper}" -- curl --silent --show-error "${Download_link}" --output "${Zip_folder_name}"
+    gum spin --spinner minidot --show-output --title "Downloading ${AUR_helper}" -- curl --silent --show-error "${Download_link}" --output "${Zip_folder_name}" >&2
     if [ $? -ne 0 ]; then
         echo "Failed to download ${AUR_helper}. Aborting." >&2
         return 1
@@ -50,7 +50,7 @@ install_aur_helper() {
     gum style --foreground 46 "  ✓ Downloaded" >&2
     
     #gum style "  -> Extracting archive..." >&2
-    gum spin --spinner minidot --show-output --title "Extracting archive..." -- tar -xvzf "${Zip_folder_name}" &>/dev/null
+    gum spin --spinner minidot --show-output --title "Extracting archive..." -- tar -xvzf "${Zip_folder_name}" &>/dev/null >&2
     if [ $? -ne 0 ]; then
         echo "Failed to extract ${AUR_helper}. Aborting." >&2
         return 1
@@ -60,7 +60,7 @@ install_aur_helper() {
     cd "${Folder}"
     
     # The -s flag is needed to automatically download and install needed dependencies that are not present in the current machine
-    gum spin --spinner minidot --show-output --title "Building package..." -- makepkg -s --nocheck
+    gum spin --spinner minidot --show-output --title "Building package..." -- makepkg -s --nocheck >&2
     if [ $? -ne 0 ]; then
         echo "Failed to build ${AUR_helper}. Aborting." >&2
         return 1
@@ -72,7 +72,7 @@ install_aur_helper() {
         echo "No package file found after build. Aborting." >&2
         return 1
     fi
-    gum spin --spinner minidot --show-output --title "Installing ${AUR_helper}..." -- sudo pacman -U "${File_name}" --noconfirm
+    gum spin --spinner minidot --show-output --title "Installing ${AUR_helper}..." -- sudo pacman -U "${File_name}" --noconfirm >&2
     if [ $? -ne 0 ]; then
         echo "Failed to install ${AUR_helper}. Aborting." >&2
         return 1
