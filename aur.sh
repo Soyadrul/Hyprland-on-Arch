@@ -1,6 +1,9 @@
 #! /usr/bin/bash
 
 install_aur_helper() {
+    # Save current stdout to File Descriptor 3, redirect stdout to stderr
+    exec 3>&1
+    exec 1>&2
     
     # List of AUR helpers (from input)
     local OPTIONS=("$@")
@@ -90,5 +93,7 @@ install_aur_helper() {
     #echo "" >&2
     gum style --bold --foreground 212 "✓ AUR helper ${AUR_helper} installed successfully!" >&2
     
-    echo "${AUR_helper}"
+    echo "${AUR_helper}" >&3
+    
+    exec 3>&-   # Close File Descriptor #3
 }
