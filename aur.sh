@@ -11,7 +11,7 @@ install_aur_helper() {
     # Check if another AUR helper is installed
     for helper in "${OPTIONS[@]}"; do
         if command -v "${helper}" >/dev/null 2>&1; then
-            echo "${helper}"
+            echo "${helper}" >&3
             return 0
         fi
     done
