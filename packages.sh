@@ -7,7 +7,7 @@ install_packages() {
     local pacman="git nano firefox vlc ffmpeg htop gtk3 gtk4 mpv mpv-mpris powertop qt5-wayland qt6-wayland gnome-themes-extra nwg-look nwg-displays zram-generator man-pages-it libva-utils vdpauinfo libvdpau-va-gl resources thunderbird libreoffice-still python-pip fzf bc arp-scan imagemagick tree trash-cli torbrowser-launcher "
     #libva-vdpau-driver
     #mpd
-    local aur="localsend-bin downgrade dotool zen-browser-bin neofetch parabolic ventoy-bin lmstudio-bin "
+    local aur="localsend-bin downgrade dotool zen-browser-bin neofetch parabolic ventoy-bin "
     #archlinux-tweak-tool-git python-spotdl
 
     # Fun
@@ -104,7 +104,7 @@ install_packages() {
 
     # To make and use virtual machines
     pacman+="qemu-full "
-    aur+="quickemu-git "
+    aur+="quickemu "
 
     # Gnome packages
     pacman+="gnome-calculator gnome-clocks gnome-text-editor gnome-weather gnome-disk-utility evince eog simple-scan snapshot "
@@ -122,6 +122,10 @@ install_packages() {
 
     # Cursor theme
     aur+="bibata-cursor-theme-bin "
+    
+    # AI
+    pacman+="opencode "
+    aur+="lmstudio-bin "
 
 
     # Downloading the packages
