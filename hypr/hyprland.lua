@@ -208,21 +208,21 @@ hl.bindm(mainMod, "mouse:272", "movewindow")
 hl.bindm(mainMod, "mouse:273", "resizewindow")
 
 -- Brightness
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl set 2%+ ; notify-send --icon=/usr/share/icons/Adwaita/symbolic/status/display-brightness-symbolic.svg --replace-id=999999 \"Brightness\" \"Current brightness: $(brightnessctl -m | awk -F',' '{print $3}') ($(brightnessctl -m | awk -F',' '{print $4}'))\""), { locked = true, repeat = true })
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 2%- ; notify-send --icon=/usr/share/icons/Adwaita/symbolic/status/weather-clear-symbolic.svg --replace-id=999999 \"Brightness\" \"Current brightness: $(brightnessctl -m | awk -F',' '{print $3}') ($(brightnessctl -m | awk -F',' '{print $4}'))\""), { locked = true, repeat = true })
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl set 2%+ ; notify-send --icon=/usr/share/icons/Adwaita/symbolic/status/display-brightness-symbolic.svg --replace-id=999999 \"Brightness\" \"Current brightness: $(brightnessctl -m | awk -F',' '{print $3}') ($(brightnessctl -m | awk -F',' '{print $4}'))\""), { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 2%- ; notify-send --icon=/usr/share/icons/Adwaita/symbolic/status/weather-clear-symbolic.svg --replace-id=999999 \"Brightness\" \"Current brightness: $(brightnessctl -m | awk -F',' '{print $3}') ($(brightnessctl -m | awk -F',' '{print $4}'))\""), { locked = true, repeating = true })
 
 -- Blue light (TO-DO)
-hl.bind(mainMod .. " + XF86MonBrightnessUp", hl.dsp.exec_cmd("source $HOME/.config/hypr/scripts/blue-light/increase-blue-light.sh"), { locked = true, repeat = true })
-hl.bind(mainMod .. " + XF86MonBrightnessDown", hl.dsp.exec_cmd("source $HOME/.config/hypr/scripts/blue-light/decrease-blue-light.sh"), { locked = true, repeat = true })
+hl.bind(mainMod .. " + XF86MonBrightnessUp", hl.dsp.exec_cmd("source $HOME/.config/hypr/scripts/blue-light/increase-blue-light.sh"), { locked = true, repeating = true })
+hl.bind(mainMod .. " + XF86MonBrightnessDown", hl.dsp.exec_cmd("source $HOME/.config/hypr/scripts/blue-light/decrease-blue-light.sh"), { locked = true, repeating = true })
 
 -- Speaker volume
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("pamixer -i 2 ; notify-send --icon=/usr/share/icons/Adwaita/symbolic/status/audio-volume-high-symbolic.svg --replace-id=999998 \"Speaker volume\" \"$(pamixer --get-volume-human)\""), { locked = true, repeat = true })
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("pamixer -d 2 ; notify-send --icon=/usr/share/icons/Adwaita/symbolic/status/audio-volume-medium-symbolic.svg --replace-id=999998 \"Speaker volume\" \"$(pamixer --get-volume-human)\""), { locked = true, repeat = true })
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("pamixer -i 2 ; notify-send --icon=/usr/share/icons/Adwaita/symbolic/status/audio-volume-high-symbolic.svg --replace-id=999998 \"Speaker volume\" \"$(pamixer --get-volume-human)\""), { locked = true, repeating = true })
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("pamixer -d 2 ; notify-send --icon=/usr/share/icons/Adwaita/symbolic/status/audio-volume-medium-symbolic.svg --replace-id=999998 \"Speaker volume\" \"$(pamixer --get-volume-human)\""), { locked = true, repeating = true })
 hl.bind("XF86AudioMute", hl.dsp.exec_cmd("pamixer --toggle-mute ; notify-send --icon=/usr/share/icons/Adwaita/symbolic/status/audio-volume-muted-symbolic.svg --replace-id=999998 \"Speaker volume\" \"Muted\""), { locked = true })
 
 -- Microphone volume
-hl.bind(mainMod .. " + XF86AudioRaiseVolume", hl.dsp.exec_cmd("pamixer --default-source -i 2 ; notify-send --icon=/usr/share/icons/Adwaita/symbolic/status/microphone-sensitivity-high-symbolic.svg --replace-id=999997 \"Microphone volume\" \"$(pamixer --default-source --get-volume-human)\""), { locked = true, repeat = true })
-hl.bind(mainMod .. " + XF86AudioLowerVolume", hl.dsp.exec_cmd("pamixer --default-source -d 2 ; notify-send --icon=/usr/share/icons/Adwaita/symbolic/status/microphone-sensitivity-medium-symbolic.svg --replace-id=999997 \"Microphone volume\" \"$(pamixer --default-source --get-volume-human)\""), { locked = true, repeat = true })
+hl.bind(mainMod .. " + XF86AudioRaiseVolume", hl.dsp.exec_cmd("pamixer --default-source -i 2 ; notify-send --icon=/usr/share/icons/Adwaita/symbolic/status/microphone-sensitivity-high-symbolic.svg --replace-id=999997 \"Microphone volume\" \"$(pamixer --default-source --get-volume-human)\""), { locked = true, repeating = true })
+hl.bind(mainMod .. " + XF86AudioLowerVolume", hl.dsp.exec_cmd("pamixer --default-source -d 2 ; notify-send --icon=/usr/share/icons/Adwaita/symbolic/status/microphone-sensitivity-medium-symbolic.svg --replace-id=999997 \"Microphone volume\" \"$(pamixer --default-source --get-volume-human)\""), { locked = true, repeating = true })
 hl.bind(mainMod .. " + XF86AudioMute", hl.dsp.exec_cmd("pamixer --default-source --toggle-mute ; notify-send --icon=/usr/share/icons/Adwaita/symbolic/status/microphone-sensitivity-muted-symbolic.svg --replace-id=999997 \"Microphone volume\" \"Muted\""), { locked = true })
 
 -- Touchpad toggle
@@ -270,10 +270,10 @@ hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("grim -g \"$(slurp)\" - | swappy 
 --hl.bind(mainMod .. " + Super_L", hl.dsp.exec_cmd("nwg-dock-hyprland"))
 
 -- Resize windows (tiled + floating)
-hl.bind(mainMod .. " + Shift + Right", hl.dsp.resizeactive("20", "0"), { repeat = true })
-hl.bind(mainMod .. " + Shift + Left", hl.dsp.resizeactive("-20", "0"), { repeat = true })
-hl.bind(mainMod .. " + Shift + Up", hl.dsp.resizeactive("0", "-20"), { repeat = true })
-hl.bind(mainMod .. " + Shift + Down", hl.dsp.resizeactive("0", "20"), { repeat = true })
+hl.bind(mainMod .. " + Shift + Right", hl.dsp.resizeactive("20", "0"), { repeating = true })
+hl.bind(mainMod .. " + Shift + Left", hl.dsp.resizeactive("-20", "0"), { repeating = true })
+hl.bind(mainMod .. " + Shift + Up", hl.dsp.resizeactive("0", "-20"), { repeating = true })
+hl.bind(mainMod .. " + Shift + Down", hl.dsp.resizeactive("0", "20"), { repeating = true })
 
 -- Move windows (tiled)
 hl.bind(mainMod .. " + Ctrl + Left", hl.dsp.swapwindow("l"))
@@ -282,10 +282,10 @@ hl.bind(mainMod .. " + Ctrl + Up", hl.dsp.swapwindow("u"))
 hl.bind(mainMod .. " + Ctrl + Down", hl.dsp.swapwindow("d"))
 
 -- Move windows (floating)
-hl.bind(mainMod .. " + Ctrl + Right", hl.dsp.moveactive("20", "0"), { repeat = true })
-hl.bind(mainMod .. " + Ctrl + Left", hl.dsp.moveactive("-20", "0"), { repeat = true })
-hl.bind(mainMod .. " + Ctrl + Up", hl.dsp.moveactive("0", "-20"), { repeat = true })
-hl.bind(mainMod .. " + Ctrl + Down", hl.dsp.moveactive("0", "20"), { repeat = true })
+hl.bind(mainMod .. " + Ctrl + Right", hl.dsp.moveactive("20", "0"), { repeating = true })
+hl.bind(mainMod .. " + Ctrl + Left", hl.dsp.moveactive("-20", "0"), { repeating = true })
+hl.bind(mainMod .. " + Ctrl + Up", hl.dsp.moveactive("0", "-20"), { repeating = true })
+hl.bind(mainMod .. " + Ctrl + Down", hl.dsp.moveactive("0", "20"), { repeating = true })
 
 -- Open system resources
 hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("resources"))
