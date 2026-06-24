@@ -72,8 +72,8 @@ hl.config({
         gaps_in = 5,
         gaps_out = out_margin,
         border_size = 3,
-        col.active_border = "rgba(33ccffee) rgba(00ff99ee) 45deg",
-        col.inactive_border = "rgba(595959aa)",
+        ["col.active_border"] = "rgba(33ccffee) rgba(00ff99ee) 45deg",
+        ["col.inactive_border"] = "rgba(595959aa)",
         layout = "dwindle",
         allow_tearing = false,
         resize_on_border = false,
@@ -136,7 +136,12 @@ hl.animation({ leaf = "fade", enabled = true, speed = 7, bezier = "default" })
 hl.animation({ leaf = "workspaces", enabled = true, speed = 6, bezier = "default" })
 
 -- Gestures
-hl.gesture({ workspace_swipe_create_new = false })
+hl.gesture({
+    fingers = 3,
+    direction = "horizontal",
+    action = "workspace",
+    workspace_swipe_create_new = false
+})
 
 -- Device config (example)
 --hl.device({ name = "", sensitivity = -0.5 })
