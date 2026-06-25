@@ -72,7 +72,8 @@ hl.config({
         gaps_in = 5,
         gaps_out = out_margin,
         border_size = 3,
-        ["col.active_border"] = "rgba(33ccffee) rgba(00ff99ee) 45deg",
+        --["col.active_border"] = "rgba(33ccffee) rgba(00ff99ee) 45deg",
+        ["col.active_border"] = "rgba(33ccffee)",
         ["col.inactive_border"] = "rgba(595959aa)",
         layout = "dwindle",
         allow_tearing = false,
@@ -99,6 +100,7 @@ hl.config({
     },
     dwindle = {
         preserve_split = true,
+        force_split = 0
     },
     master = {},
     misc = {
@@ -106,7 +108,7 @@ hl.config({
         force_default_wallpaper = 0,
     },
     cursor = {
-        no_hardware_cursors = 2,
+        no_hardware_cursors = 0,
     },
     xwayland = {
         force_zero_scaling = true,
@@ -179,10 +181,10 @@ hl.bind(mainMod .. " + 3", hl.dsp.focus({ workspace = 3 }))
 hl.bind(mainMod .. " + 4", hl.dsp.focus({ workspace = 4 }))
 hl.bind(mainMod .. " + 5", hl.dsp.focus({ workspace = 5 }))
 --hl.bind(mainMod .. " + 6", hl.dsp.focus({ workspace = 6 }))
---hl.bind(mainMod .. " + 6", hl.dsp.focus({ workspace = 7 }))
---hl.bind(mainMod .. " + 6", hl.dsp.focus({ workspace = 8 }))
---hl.bind(mainMod .. " + 6", hl.dsp.focus({ workspace = 9 }))
---hl.bind(mainMod .. " + 6", hl.dsp.focus({ workspace = 10 }))
+--hl.bind(mainMod .. " + 7", hl.dsp.focus({ workspace = 7 }))
+--hl.bind(mainMod .. " + 8", hl.dsp.focus({ workspace = 8 }))
+--hl.bind(mainMod .. " + 9", hl.dsp.focus({ workspace = 9 }))
+--hl.bind(mainMod .. " + 0", hl.dsp.focus({ workspace = 10 }))
 
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
 hl.bind(mainMod .. " + SHIFT + 1", hl.dsp.window.move({ workspace = 1 }))
@@ -197,20 +199,20 @@ hl.bind(mainMod .. " + SHIFT + 5", hl.dsp.window.move({ workspace = 5 }))
 --hl.bind(mainMod .. " + SHIFT + 0", hl.dsp.window.move({ workspace = 10 }))
 
 -- Special workspace (scratchpad)
-hl.bind(mainMod .. " + S", hl.dsp.togglespecialworkspace("magic"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.movetoworkspace("special:magic"))
+hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
 -- Scroll through existing workspaces with mainMod + scroll
-hl.bind(mainMod .. " + mouse_down", hl.workspace("e+1"))
-hl.bind(mainMod .. " + mouse_up", hl.workspace("e-1"))
+hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 
 -- Scroll through existing workspaces with mainMod + ALT
-hl.bind(mainMod .. " + Alt + right", hl.workspace("e+1"))
-hl.bind(mainMod .. " + Alt + left", hl.workspace("e-1"))
+hl.bind(mainMod .. " + ALT + right", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(mainMod .. " + ALT + left", hl.dsp.focus({ workspace = "e-1" }))
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
-hl.bindm(mainMod, "mouse:272", "movewindow")
-hl.bindm(mainMod, "mouse:273", "resizewindow")
+hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })    -- Move a window
+hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })  -- Resize a window
 
 -- Brightness
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl set 2%+ ; notify-send --icon=/usr/share/icons/Adwaita/symbolic/status/display-brightness-symbolic.svg --replace-id=999999 \"Brightness\" \"Current brightness: $(brightnessctl -m | awk -F',' '{print $3}') ($(brightnessctl -m | awk -F',' '{print $4}'))\""), { locked = true, repeating = true })
@@ -243,7 +245,7 @@ hl.bind("XF86AudioStop", hl.dsp.exec_cmd("playerctl stop"), { locked = true })
 hl.bind(mainMod .. " + XF86AudioStop", hl.dsp.exec_cmd("playerctl --all-players stop"), { locked = true })
 
 -- Fullscreen
-hl.bind(mainMod .. " + F", hl.dsp.fullscreen())
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
 
 -- Wallpaper (reload)
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("RANDOM_FILE=$(find $HOME/.config/wallpapers/*/ -type f -not -name \"*.txt\" | shuf -n 1) ; hyprctl hyprpaper preload $RANDOM_FILE ; hyprctl hyprpaper wallpaper \" ,$RANDOM_FILE\" ; hyprctl hyprpaper unload unused"))
@@ -253,9 +255,9 @@ hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("loginctl lock-session"), { locked = 
 hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd("systemctl suspend"), { locked = true })
 
 -- Clipboard manager (cliphist)
-hl.bind("Alt + SHIFT + C", hl.dsp.exec_cmd("cliphist list | wofi -S dmenu | cliphist decode | wl-copy"))
-hl.bind("Alt + SHIFT + D", hl.dsp.exec_cmd("cliphist wipe  ; notify-send --urgency=critical \"Erased clipboard history\" \"All the clipboard history has been erased\""))
---hl.bind("Alt + SHIFT + D", hl.dsp.exec_cmd("cliphist list | wofi -S dmenu | cliphist delete"))
+hl.bind("ALT + SHIFT + C", hl.dsp.exec_cmd("cliphist list | wofi -S dmenu | cliphist decode | wl-copy"))
+hl.bind("ALT + SHIFT + D", hl.dsp.exec_cmd("cliphist wipe  ; notify-send --urgency=critical \"Erased clipboard history\" \"All the clipboard history has been erased\""))
+--hl.bind("ALT + SHIFT + D", hl.dsp.exec_cmd("cliphist list | wofi -S dmenu | cliphist delete"))
 
 -- Lid switch (suspend)
 hl.bind("switch:on:Lid Switch", hl.dsp.exec_cmd("systemctl suspend"), { locked = true })
@@ -264,8 +266,10 @@ hl.bind("switch:on:Lid Switch", hl.dsp.exec_cmd("systemctl suspend"), { locked =
 --hl.bind("switch:off:Lid Switch", hl.dsp.exec_cmd("hyprctl keyword monitor \"eDP-1, 1920x1080, 0x0, 1\""))
 
 -- Switch between windows in a floating workspace
-hl.bind(mainMod .. " + Tab", hl.dsp.cyclenext())
-hl.bind(mainMod .. " + Tab", hl.dsp.alterzorder("top"))
+hl.bind(mainMod .. " + TAB", function()
+  hl.dispatch(hl.dsp.window.cycle_next())
+  hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top" })) -- TO-DO: when 1 window is in float mode and the other in "normal" mode the float window is always on top, but the correct window is selected
+end)
 
 -- Screenshot
 hl.bind("Print", hl.dsp.exec_cmd("grim - | swappy -f -"), { locked = true })
@@ -275,26 +279,27 @@ hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("grim -g \"$(slurp)\" - | swappy 
 --hl.bind(mainMod .. " + Super_L", hl.dsp.exec_cmd("nwg-dock-hyprland"))
 
 -- Resize windows (tiled + floating)
-hl.bind(mainMod .. " + SHIFT + Right", hl.dsp.resizeactive("20", "0"), { repeating = true })
-hl.bind(mainMod .. " + SHIFT + Left", hl.dsp.resizeactive("-20", "0"), { repeating = true })
-hl.bind(mainMod .. " + SHIFT + Up", hl.dsp.resizeactive("0", "-20"), { repeating = true })
-hl.bind(mainMod .. " + SHIFT + Down", hl.dsp.resizeactive("0", "20"), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + Right", hl.dsp.window.resize({ x = 20, y = 0, relative = true }), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + Left",  hl.dsp.window.resize({ x = -20, y = 0, relative = true }), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + Up",    hl.dsp.window.resize({ x = 0, y = -20, relative = true }), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + Down",  hl.dsp.window.resize({ x = 0, y = 20, relative = true }), { repeating = true })
 
 -- Move windows (tiled)
-hl.bind(mainMod .. " + Ctrl + Left", hl.dsp.swapwindow("l"))
-hl.bind(mainMod .. " + Ctrl + Right", hl.dsp.swapwindow("r"))
-hl.bind(mainMod .. " + Ctrl + Up", hl.dsp.swapwindow("u"))
-hl.bind(mainMod .. " + Ctrl + Down", hl.dsp.swapwindow("d"))
+hl.bind(mainMod .. " + CTRL + Left",  hl.dsp.window.swap({ direction = "l" }))
+hl.bind(mainMod .. " + CTRL + Right", hl.dsp.window.swap({ direction = "r" }))
+hl.bind(mainMod .. " + CTRL + Up",    hl.dsp.window.swap({ direction = "u" }))
+hl.bind(mainMod .. " + CTRL + Down",  hl.dsp.window.swap({ direction = "d" }))
 
--- Move windows (floating)
-hl.bind(mainMod .. " + Ctrl + Right", hl.dsp.moveactive("20", "0"), { repeating = true })
-hl.bind(mainMod .. " + Ctrl + Left", hl.dsp.moveactive("-20", "0"), { repeating = true })
-hl.bind(mainMod .. " + Ctrl + Up", hl.dsp.moveactive("0", "-20"), { repeating = true })
-hl.bind(mainMod .. " + Ctrl + Down", hl.dsp.moveactive("0", "20"), { repeating = true })
+-- Move windows (floating) - TO-DO
+--hl.bind(mainMod .. " + CTRL + Right", hl.dsp.moveactive("20", "0"), { repeating = true })
+--hl.bind(mainMod .. " + CTRL + Left", hl.dsp.moveactive("-20", "0"), { repeating = true })
+--hl.bind(mainMod .. " + CTRL + Up", hl.dsp.moveactive("0", "-20"), { repeating = true })
+--hl.bind(mainMod .. " + CTRL + Down", hl.dsp.moveactive("0", "20"), { repeating = true })
 
 -- Open system resources
 hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("resources"))
 
--- Activate/deactivate greyscale mode
-hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("if [[ \"$(hyprctl getoption decoration:screen_shader | grep \"set\")\" == \"set: false\" ]]; then hyprctl keyword decoration:screen_shader $HOME/.config/hypr/shaders/greyscale_50.glsl; elif [[ \"$(hyprctl getoption decoration:screen_shader | grep \"greyscale_50.glsl\")\" == \"str: $HOME/.config/hypr/shaders/greyscale_50.glsl\" ]]; then hyprctl keyword decoration:screen_shader $HOME/.config/hypr/shaders/greyscale_100.glsl; else hyprctl reload; fi"), { locked = true })
-hl.bind(mainMod .. " + SHIFT + G", hl.dsp.exec_cmd("case \"$(hyprctl getoption decoration:screen_shader | grep \"greyscale\")\" in \"str: /home/soyadrul/.config/hypr/shaders/greyscale_50.glsl\") hyprctl reload;; \"str: /home/soyadrul/.config/hypr/shaders/greyscale_100.glsl\") hyprctl keyword decoration:screen_shader $HOME/.config/hypr/shaders/greyscale_50.glsl;; *) hyprctl keyword decoration:screen_shader $HOME/.config/hypr/shaders/greyscale_100.glsl;; esac"), { locked = true })
+-- Activate/deactivate greyscale mode - TO-DO
+--hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("if [[ \"$(hyprctl getoption decoration:screen_shader | grep \"set\")\" == \"set: false\" ]]; then hyprctl keyword decoration:screen_shader $HOME/.config/hypr/shaders/greyscale_50.glsl; elif [[ \"$(hyprctl getoption decoration:screen_shader | grep \"greyscale_50.glsl\")\" == \"str: $HOME/.config/hypr/shaders/greyscale_50.glsl\" ]]; then hyprctl keyword decoration:screen_shader $HOME/.config/hypr/shaders/greyscale_100.glsl; else hyprctl reload; fi"), { locked = true })
+
+--hl.bind(mainMod .. " + SHIFT + G", hl.dsp.exec_cmd("case \"$(hyprctl getoption decoration:screen_shader | grep \"greyscale\")\" in \"str: /home/soyadrul/.config/hypr/shaders/greyscale_50.glsl\") hyprctl reload;; \"str: /home/soyadrul/.config/hypr/shaders/greyscale_100.glsl\") hyprctl keyword decoration:screen_shader $HOME/.config/hypr/shaders/greyscale_50.glsl;; *) hyprctl keyword decoration:screen_shader $HOME/.config/hypr/shaders/greyscale_100.glsl;; esac"), { locked = true })
