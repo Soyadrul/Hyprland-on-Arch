@@ -159,46 +159,46 @@ hl.gesture({
 
 -- General
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
-hl.bind(mainMod .. " + C", hl.dsp.killactive())
+hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + M", hl.dsp.exit())
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + V", hl.dsp.togglefloating())
+hl.bind(mainMod .. " + V", hl.dsp.window.float())
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + P", hl.dsp.pseudo())
+hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 
 -- Move focus with arrow keys
-hl.bind(mainMod .. " + left", hl.dsp.movefocus("l"))
-hl.bind(mainMod .. " + right", hl.dsp.movefocus("r"))
-hl.bind(mainMod .. " + up", hl.dsp.movefocus("u"))
-hl.bind(mainMod .. " + down", hl.dsp.movefocus("d"))
+hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "l" }))
+hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "r" }))
+hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "u" }))
+hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "d" }))
 
 -- Switch workspaces with mainMod + [0-9]
-hl.bind(mainMod .. " + 1", hl.workspace(1))
-hl.bind(mainMod .. " + 2", hl.workspace(2))
-hl.bind(mainMod .. " + 3", hl.workspace(3))
-hl.bind(mainMod .. " + 4", hl.workspace(4))
-hl.bind(mainMod .. " + 5", hl.workspace(5))
---hl.bind(mainMod .. " + 6", hl.workspace(6))
---hl.bind(mainMod .. " + 7", hl.workspace(7))
---hl.bind(mainMod .. " + 8", hl.workspace(8))
---hl.bind(mainMod .. " + 9", hl.workspace(9))
---hl.bind(mainMod .. " + 0", hl.workspace(10))
+hl.bind(mainMod .. " + 1", hl.dsp.focus({ workspace = 1 }))
+hl.bind(mainMod .. " + 2", hl.dsp.focus({ workspace = 2 }))
+hl.bind(mainMod .. " + 3", hl.dsp.focus({ workspace = 3 }))
+hl.bind(mainMod .. " + 4", hl.dsp.focus({ workspace = 4 }))
+hl.bind(mainMod .. " + 5", hl.dsp.focus({ workspace = 5 }))
+--hl.bind(mainMod .. " + 6", hl.dsp.focus({ workspace = 6 }))
+--hl.bind(mainMod .. " + 6", hl.dsp.focus({ workspace = 7 }))
+--hl.bind(mainMod .. " + 6", hl.dsp.focus({ workspace = 8 }))
+--hl.bind(mainMod .. " + 6", hl.dsp.focus({ workspace = 9 }))
+--hl.bind(mainMod .. " + 6", hl.dsp.focus({ workspace = 10 }))
 
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
-hl.bind(mainMod .. " + Shift + 1", hl.dsp.movetoworkspace("1"))
-hl.bind(mainMod .. " + Shift + 2", hl.dsp.movetoworkspace("2"))
-hl.bind(mainMod .. " + Shift + 3", hl.dsp.movetoworkspace("3"))
-hl.bind(mainMod .. " + Shift + 4", hl.dsp.movetoworkspace("4"))
-hl.bind(mainMod .. " + Shift + 5", hl.dsp.movetoworkspace("5"))
---hl.bind(mainMod .. " + Shift + 6", hl.dsp.movetoworkspace("6"))
---hl.bind(mainMod .. " + Shift + 7", hl.dsp.movetoworkspace("7"))
---hl.bind(mainMod .. " + Shift + 8", hl.dsp.movetoworkspace("8"))
---hl.bind(mainMod .. " + Shift + 9", hl.dsp.movetoworkspace("9"))
---hl.bind(mainMod .. " + Shift + 0", hl.dsp.movetoworkspace("10"))
+hl.bind(mainMod .. " + SHIFT + 1", hl.dsp.window.move({ workspace = 1 }))
+hl.bind(mainMod .. " + SHIFT + 2", hl.dsp.window.move({ workspace = 2 }))
+hl.bind(mainMod .. " + SHIFT + 3", hl.dsp.window.move({ workspace = 3 }))
+hl.bind(mainMod .. " + SHIFT + 4", hl.dsp.window.move({ workspace = 4 }))
+hl.bind(mainMod .. " + SHIFT + 5", hl.dsp.window.move({ workspace = 5 }))
+--hl.bind(mainMod .. " + SHIFT + 6", hl.dsp.window.move({ workspace = 6 }))
+--hl.bind(mainMod .. " + SHIFT + 7", hl.dsp.window.move({ workspace = 7 }))
+--hl.bind(mainMod .. " + SHIFT + 8", hl.dsp.window.move({ workspace = 8 }))
+--hl.bind(mainMod .. " + SHIFT + 9", hl.dsp.window.move({ workspace = 9 }))
+--hl.bind(mainMod .. " + SHIFT + 0", hl.dsp.window.move({ workspace = 10 }))
 
 -- Special workspace (scratchpad)
 hl.bind(mainMod .. " + S", hl.dsp.togglespecialworkspace("magic"))
-hl.bind(mainMod .. " + Shift + S", hl.dsp.movetoworkspace("special:magic"))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.movetoworkspace("special:magic"))
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.workspace("e+1"))
@@ -250,12 +250,12 @@ hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("RANDOM_FILE=$(find $HOME/.config/wal
 
 -- Lock screen
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("loginctl lock-session"), { locked = true })
-hl.bind(mainMod .. " + Shift + L", hl.dsp.exec_cmd("systemctl suspend"), { locked = true })
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd("systemctl suspend"), { locked = true })
 
 -- Clipboard manager (cliphist)
-hl.bind("Alt + Shift + C", hl.dsp.exec_cmd("cliphist list | wofi -S dmenu | cliphist decode | wl-copy"))
-hl.bind("Alt + Shift + D", hl.dsp.exec_cmd("cliphist wipe  ; notify-send --urgency=critical \"Erased clipboard history\" \"All the clipboard history has been erased\""))
---hl.bind("Alt + Shift + D", hl.dsp.exec_cmd("cliphist list | wofi -S dmenu | cliphist delete"))
+hl.bind("Alt + SHIFT + C", hl.dsp.exec_cmd("cliphist list | wofi -S dmenu | cliphist decode | wl-copy"))
+hl.bind("Alt + SHIFT + D", hl.dsp.exec_cmd("cliphist wipe  ; notify-send --urgency=critical \"Erased clipboard history\" \"All the clipboard history has been erased\""))
+--hl.bind("Alt + SHIFT + D", hl.dsp.exec_cmd("cliphist list | wofi -S dmenu | cliphist delete"))
 
 -- Lid switch (suspend)
 hl.bind("switch:on:Lid Switch", hl.dsp.exec_cmd("systemctl suspend"), { locked = true })
@@ -275,10 +275,10 @@ hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("grim -g \"$(slurp)\" - | swappy 
 --hl.bind(mainMod .. " + Super_L", hl.dsp.exec_cmd("nwg-dock-hyprland"))
 
 -- Resize windows (tiled + floating)
-hl.bind(mainMod .. " + Shift + Right", hl.dsp.resizeactive("20", "0"), { repeating = true })
-hl.bind(mainMod .. " + Shift + Left", hl.dsp.resizeactive("-20", "0"), { repeating = true })
-hl.bind(mainMod .. " + Shift + Up", hl.dsp.resizeactive("0", "-20"), { repeating = true })
-hl.bind(mainMod .. " + Shift + Down", hl.dsp.resizeactive("0", "20"), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + Right", hl.dsp.resizeactive("20", "0"), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + Left", hl.dsp.resizeactive("-20", "0"), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + Up", hl.dsp.resizeactive("0", "-20"), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + Down", hl.dsp.resizeactive("0", "20"), { repeating = true })
 
 -- Move windows (tiled)
 hl.bind(mainMod .. " + Ctrl + Left", hl.dsp.swapwindow("l"))
@@ -297,4 +297,4 @@ hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("resources"))
 
 -- Activate/deactivate greyscale mode
 hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("if [[ \"$(hyprctl getoption decoration:screen_shader | grep \"set\")\" == \"set: false\" ]]; then hyprctl keyword decoration:screen_shader $HOME/.config/hypr/shaders/greyscale_50.glsl; elif [[ \"$(hyprctl getoption decoration:screen_shader | grep \"greyscale_50.glsl\")\" == \"str: $HOME/.config/hypr/shaders/greyscale_50.glsl\" ]]; then hyprctl keyword decoration:screen_shader $HOME/.config/hypr/shaders/greyscale_100.glsl; else hyprctl reload; fi"), { locked = true })
-hl.bind(mainMod .. " + Shift + G", hl.dsp.exec_cmd("case \"$(hyprctl getoption decoration:screen_shader | grep \"greyscale\")\" in \"str: /home/soyadrul/.config/hypr/shaders/greyscale_50.glsl\") hyprctl reload;; \"str: /home/soyadrul/.config/hypr/shaders/greyscale_100.glsl\") hyprctl keyword decoration:screen_shader $HOME/.config/hypr/shaders/greyscale_50.glsl;; *) hyprctl keyword decoration:screen_shader $HOME/.config/hypr/shaders/greyscale_100.glsl;; esac"), { locked = true })
+hl.bind(mainMod .. " + SHIFT + G", hl.dsp.exec_cmd("case \"$(hyprctl getoption decoration:screen_shader | grep \"greyscale\")\" in \"str: /home/soyadrul/.config/hypr/shaders/greyscale_50.glsl\") hyprctl reload;; \"str: /home/soyadrul/.config/hypr/shaders/greyscale_100.glsl\") hyprctl keyword decoration:screen_shader $HOME/.config/hypr/shaders/greyscale_50.glsl;; *) hyprctl keyword decoration:screen_shader $HOME/.config/hypr/shaders/greyscale_100.glsl;; esac"), { locked = true })
