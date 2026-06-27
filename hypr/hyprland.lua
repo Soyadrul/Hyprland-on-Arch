@@ -37,7 +37,7 @@ hl.env("XDG_SESSION_DESKTOP", "Hyprland")
 hl.on("hyprland.start", function()
     hl.exec_cmd("waybar --config $HOME/.config/waybar/config --style $HOME/.config/waybar/style.css")
     hl.exec_cmd("hyprpaper")
-    hl.exec_cmd("nwg-dock-hyprland -d -c \"wofi --show drun\" -i 36 -lp start -mb $out_margin -p bottom -s \"style.css\"")
+    hl.exec_cmd("nwg-dock-hyprland -d -c \"wofi --show drun\" -i 36 -lp start -mb out_margin -p bottom -s \"style.css\"")
     hl.exec_cmd("systemctl --user start hyprpolkitagent")
     hl.exec_cmd("wl-paste --type text --watch cliphist store") -- Stores only text data
     hl.exec_cmd("wl-paste --type image --watch cliphist store") -- Stores only image data
@@ -80,6 +80,7 @@ hl.config({
         resize_on_border = false,
     },
     decoration = {
+        screen_shader = "",
         rounding = 7,
         blur = {
             enabled = true,
@@ -276,7 +277,7 @@ hl.bind("Print", hl.dsp.exec_cmd("grim - | swappy -f -"), { locked = true })
 hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("grim -g \"$(slurp)\" - | swappy -f -"))
 
 -- Toggle nwg-dock-hyprland
-hl.bind(mainMod .. " + Super_L", hl.dsp.exec_cmd("nwg-dock-hyprland"))
+--hl.bind(mainMod .. " + Super_L", hl.dsp.exec_cmd("nwg-dock-hyprland"))
 
 -- Resize windows (tiled + floating)
 hl.bind(mainMod .. " + SHIFT + Right", hl.dsp.window.resize({ x = 20, y = 0, relative = true }), { repeating = true })
@@ -299,7 +300,8 @@ hl.bind(mainMod .. " + CTRL + Down",  hl.dsp.window.swap({ direction = "d" }))
 -- Open system resources
 hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("resources"))
 
--- Activate/deactivate greyscale mode - TO-DO
---hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("if [[ \"$(hyprctl getoption decoration:screen_shader | grep \"set\")\" == \"set: false\" ]]; then hyprctl keyword decoration:screen_shader $HOME/.config/hypr/shaders/greyscale_50.glsl; elif [[ \"$(hyprctl getoption decoration:screen_shader | grep \"greyscale_50.glsl\")\" == \"str: $HOME/.config/hypr/shaders/greyscale_50.glsl\" ]]; then hyprctl keyword decoration:screen_shader $HOME/.config/hypr/shaders/greyscale_100.glsl; else hyprctl reload; fi"), { locked = true })
+-- Greyscale mode toggle (forward cycle: off → 50% → 100% → off)
+hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/greyscale/greyscale.sh forward"), { locked = true })
 
---hl.bind(mainMod .. " + SHIFT + G", hl.dsp.exec_cmd("case \"$(hyprctl getoption decoration:screen_shader | grep \"greyscale\")\" in \"str: /home/soyadrul/.config/hypr/shaders/greyscale_50.glsl\") hyprctl reload;; \"str: /home/soyadrul/.config/hypr/shaders/greyscale_100.glsl\") hyprctl keyword decoration:screen_shader $HOME/.config/hypr/shaders/greyscale_50.glsl;; *) hyprctl keyword decoration:screen_shader $HOME/.config/hypr/shaders/greyscale_100.glsl;; esac"), { locked = true })
+-- Greyscale mode toggle (backward cycle: off → 100% → 50% → off)
+hl.bind(mainMod .. " + SHIFT + G", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/greyscale/greyscale.sh backward"), { locked = true })
