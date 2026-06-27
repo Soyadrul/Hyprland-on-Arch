@@ -37,7 +37,7 @@ hl.env("XDG_SESSION_DESKTOP", "Hyprland")
 hl.on("hyprland.start", function()
     hl.exec_cmd("waybar --config $HOME/.config/waybar/config --style $HOME/.config/waybar/style.css")
     hl.exec_cmd("hyprpaper")
-    hl.exec_cmd("nwg-dock-hyprland -d -c 'wofi --show drun' -i 36 -lp start -mb $out_margin -p bottom -s 'style.css'")
+    hl.exec_cmd("nwg-dock-hyprland -d -c \"wofi --show drun\" -i 36 -lp start -mb $out_margin -p bottom -s \"style.css\"")
     hl.exec_cmd("systemctl --user start hyprpolkitagent")
     hl.exec_cmd("wl-paste --type text --watch cliphist store") -- Stores only text data
     hl.exec_cmd("wl-paste --type image --watch cliphist store") -- Stores only image data
@@ -276,7 +276,7 @@ hl.bind("Print", hl.dsp.exec_cmd("grim - | swappy -f -"), { locked = true })
 hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("grim -g \"$(slurp)\" - | swappy -f -"))
 
 -- Toggle nwg-dock-hyprland
---hl.bind(mainMod .. " + Super_L", hl.dsp.exec_cmd("nwg-dock-hyprland"))
+hl.bind(mainMod .. " + Super_L", hl.dsp.exec_cmd("nwg-dock-hyprland"))
 
 -- Resize windows (tiled + floating)
 hl.bind(mainMod .. " + SHIFT + Right", hl.dsp.window.resize({ x = 20, y = 0, relative = true }), { repeating = true })

@@ -63,7 +63,7 @@ mkdir -p "${target_folder}"
 ln -s "${Current_location}"/mpv/* "${target_folder}"
 
 # nwg-dock-hyprland - Dock
-target_folder="$HOME/.config/nwg-dock-hyprland/"
+target_folder="$HOME/nwg-dock-hyprland/"
 mkdir -p "${target_folder}"
 ln -s "${Current_location}"/nwg-dock-hyprland/* "${target_folder}"
 
