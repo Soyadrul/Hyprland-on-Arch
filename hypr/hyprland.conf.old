@@ -285,9 +285,9 @@ bindm = $mainMod, mouse:273, resizewindow
 
 
 
-# Brightness ( OLD command to get the notification text: "$(brightnessctl i | grep "%" | sed -e 's/\t//')" )
-bindle = , XF86MonBrightnessUp, exec, brightnessctl set 2%+ ; notify-send --icon=/usr/share/icons/Adwaita/symbolic/status/display-brightness-symbolic.svg --replace-id=999999 "Brightness" "Current brightness: $(brightnessctl -m | awk -F',' '{print $3}') ($(brightnessctl -m | awk -F',' '{print $4}'))"
-bindle = , XF86MonBrightnessDown, exec, brightnessctl set 2%- ; notify-send --icon=/usr/share/icons/Adwaita/symbolic/status/weather-clear-symbolic.svg --replace-id=999999 "Brightness" "Current brightness: $(brightnessctl -m | awk -F',' '{print $3}') ($(brightnessctl -m | awk -F',' '{print $4}'))"
+# Brightness (internal panel via brightnessctl, external monitors via DDC/CI)
+bindle = , XF86MonBrightnessUp, exec, notify-send --icon=/usr/share/icons/Adwaita/symbolic/status/display-brightness-symbolic.svg --replace-id=999999 "Brightness" "Current brightness: $($HOME/.config/hypr/scripts/brightness/brightness.sh up 2)"
+bindle = , XF86MonBrightnessDown, exec, notify-send --icon=/usr/share/icons/Adwaita/symbolic/status/weather-clear-symbolic.svg --replace-id=999999 "Brightness" "Current brightness: $($HOME/.config/hypr/scripts/brightness/brightness.sh down 2)"
 
 # Blue light (TO-DO)
 bindle = $mainMod, XF86MonBrightnessUp, exec, source $HOME/.config/hypr/scripts/blue-light/increase-blue-light.sh

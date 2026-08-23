@@ -215,9 +215,9 @@ hl.bind(mainMod .. " + ALT + left", hl.dsp.focus({ workspace = "e-1" }))
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })    -- Move a window
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })  -- Resize a window
 
--- Brightness
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl set 2%+ ; notify-send --icon=/usr/share/icons/Adwaita/symbolic/status/display-brightness-symbolic.svg --replace-id=999999 \"Brightness\" \"Current brightness: $(brightnessctl -m | awk -F',' '{print $3}') ($(brightnessctl -m | awk -F',' '{print $4}'))\""), { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 2%- ; notify-send --icon=/usr/share/icons/Adwaita/symbolic/status/weather-clear-symbolic.svg --replace-id=999999 \"Brightness\" \"Current brightness: $(brightnessctl -m | awk -F',' '{print $3}') ($(brightnessctl -m | awk -F',' '{print $4}'))\""), { locked = true, repeating = true })
+-- Brightness (internal panel via brightnessctl, external monitors via DDC/CI)
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("notify-send --icon=/usr/share/icons/Adwaita/symbolic/status/display-brightness-symbolic.svg --replace-id=999999 \"Brightness\" \"Current brightness: $($HOME/.config/hypr/scripts/brightness/brightness.sh up 2)\""), { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("notify-send --icon=/usr/share/icons/Adwaita/symbolic/status/weather-clear-symbolic.svg --replace-id=999999 \"Brightness\" \"Current brightness: $($HOME/.config/hypr/scripts/brightness/brightness.sh down 2)\""), { locked = true, repeating = true })
 
 -- Blue light (TO-DO)
 hl.bind(mainMod .. " + XF86MonBrightnessUp", hl.dsp.exec_cmd("source $HOME/.config/hypr/scripts/blue-light/increase-blue-light.sh"), { locked = true, repeating = true })
