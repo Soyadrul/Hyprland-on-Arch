@@ -30,7 +30,7 @@ install_packages() {
     
     # Install Nvidia packages if a Nvidia card is detected
     if lspci | grep -qi "nvidia"; then
-        pacman+="nvidia-open libva-nvidia-driver nvidia-utils lib32-nvidia-utils libvdpau lib32-libvdpau libva lib32-libva libva-utils libvarlink "
+        pacman+="nvidia-open libva-nvidia-driver nvidia-utils lib32-nvidia-utils libvdpau libva lib32-libva libva-utils libvarlink "
     fi
 
 
