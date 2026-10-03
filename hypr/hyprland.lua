@@ -300,8 +300,8 @@ hl.bind(mainMod .. " + CTRL + Down",  hl.dsp.window.swap({ direction = "d" }))
 -- Open system resources
 hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("resources"))
 
--- Greyscale mode toggle (forward cycle: off → 50% → 100% → off)
+-- Greyscale mode toggle (forward cycle: off → 25% → 50% → 75% → 100% → off)
 hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/greyscale/greyscale.sh forward"), { locked = true })
 
--- Greyscale mode toggle (backward cycle: off → 100% → 50% → off)
+-- Greyscale mode toggle (backward cycle: off → 100% → 75% → 50% → 25% → off)
 hl.bind(mainMod .. " + SHIFT + G", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/greyscale/greyscale.sh backward"), { locked = true })

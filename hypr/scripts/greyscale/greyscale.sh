@@ -11,8 +11,12 @@ current_shader=$(hyprctl getoption decoration:screen_shader | grep "str:" | sed 
 
 if [[ "${current_shader}" == *"greyscale_100"* ]]; then
     current="100"
+elif [[ "${current_shader}" == *"greyscale_75"* ]]; then
+    current="75"
 elif [[ "${current_shader}" == *"greyscale_50"* ]]; then
     current="50"
+elif [[ "${current_shader}" == *"greyscale_25"* ]]; then
+    current="25"
 else
     current="0"
 fi
@@ -20,18 +24,22 @@ fi
 case "${direction}" in
     forward)
         case "${current}" in
-            0)  next="50"  ;;
-            50) next="100" ;;
-            100) next="0"  ;;
-            *)  next="50"  ;;
+            0)   next="25"  ;;
+            25)  next="50"  ;;
+            50)  next="75"  ;;
+            75)  next="100" ;;
+            100) next="0"   ;;
+            *)   next="50"  ;;
         esac
         ;;
     backward)
         case "${current}" in
-            0)  next="100" ;;
-            100) next="50"  ;;
-            50) next="0"   ;;
-            *)  next="100" ;;
+            0)   next="100" ;;
+            100) next="75"  ;;
+            75)  next="50"  ;;
+            50)  next="25"  ;;
+            25)  next="0"   ;;
+            *)   next="100" ;;
         esac
         ;;
     *)
