@@ -71,10 +71,28 @@ ddc_raw_set() {
 # step from a fresh read makes rapid taps write the same target over and over
 # and lose steps. Keep a per-bus state of the last value we successfully wrote
 # and accumulate against that; re-read the monitor only when the state is
-# missing or older than ddc_state_resync_after seconds, so changes made with the
-# monitor's own OSD are still picked up. A per-bus flock serializes concurrent
-# runs (key repeat) so they cannot lose increments either.
+# missing or older than ddc_state_resync_after seconds. A per-bus flock
+# serializes concurrent runs (key repeat) so they cannot lose increments either.
 ddc_state_resync_after=15
+
+# A brightness change made with the monitor's own OSD/physical buttons is not
+# visible over DDC until a DDC transaction happens, and the first read(s) after
+# that can still return the pre-change value. Kick the monitor with a throwaway
+# read, then read a few times and keep the last reply, so a resync sees the
+# value the monitor is actually showing.
+ddc_read_current() {
+    local bus="${1}" i out="" reply ok=0
+    ddcutil --skip-ddc-checks --bus "${bus}" --brief getvcp 10 >/dev/null 2>&1
+    for i in 1 2; do
+        sleep 0.05
+        if reply=$(ddcutil --skip-ddc-checks --bus "${bus}" --brief getvcp 10 2>/dev/null); then
+            out="${reply}"
+            ok=1
+        fi
+    done
+    (( ok )) || return 1
+    printf '%s\n' "${out}"
+}
 
 ddc_fallback() {
     local bus="${1}"
@@ -95,7 +113,7 @@ ddc_adjust() {
     if [[ "${state_val}" =~ ^[0-9]+$ && "${state_time}" =~ ^[0-9]+$ ]] &&
         (( $(date +%s) - state_time < ddc_state_resync_after )); then
         cur="${state_val}"
-    elif out=$(ddcutil --skip-ddc-checks --bus "${bus}" --brief getvcp 10 2>/dev/null); then
+    elif out=$(ddc_read_current "${bus}"); then
         cur=$(awk '{print $4}' <<<"${out}")
         read_max=$(awk '{print $5}' <<<"${out}")
         [[ "${read_max}" =~ ^[0-9]+$ ]] && max="${read_max}"
